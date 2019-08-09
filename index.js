@@ -86,11 +86,12 @@ var uploader = multer({
 
 //----------------------------------------------
 app.post("/welcome", async (req, res) => {
-    const { first, last, email, password } = req.body;
+    const { first, last, email, password, role } = req.body;
     try {
         let hash = await bc.hashPassword(password);
-        let result = await db.newUser(first, last, email, hash);
+        let result = await db.newUser(first, last, email, hash, role);
         req.session.userId = result.rows[0].id;
+        // req.session.role = result.rows[0].role;
         res.json({ success: true });
     } catch (err) {
         console.log("err in POST /welcome", err);
@@ -101,7 +102,7 @@ app.post("/login", async (req, res) => {
     const { email, password } = req.body;
     try {
         let result = await db.getPassword(email);
-        // console.log("result is:", result.rows.length);
+        console.log("result is:", result.rows[0]);
         if (result.rows.length == 0) {
             throw new Error("email is not registered");
         }
@@ -111,6 +112,7 @@ app.post("/login", async (req, res) => {
         );
         // console.log("didMatch", didMatch);
         req.session.userId = result.rows[0].id;
+        // req.session.role = result.rows[0].role;
         res.json({ didMatch });
     } catch (err) {
         console.log("err in POST /login", err);

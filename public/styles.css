@@ -14,7 +14,7 @@
     width: 23rem;
     height: 23rem;
     background-color: white;
-    /* box-shadow: 0 0 10px gray; */
+    box-shadow: 0 0 10px gray;
     display: grid;
     grid-template-rows: 20% auto 20%;
 }
@@ -162,7 +162,6 @@ input {
 
 header {
     height: 6rem;
-    background-color: #2B2F3C;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -174,7 +173,7 @@ header {
     object-fit: cover;
     margin-right: 0.6rem;
     cursor: pointer;
-    border-radius: 3px;
+    border-radius: 50%;
 }
 
 #small-logo {
@@ -186,10 +185,6 @@ header {
     margin-left: 0.6rem;
 }
 
-.nav-container {
-    background-color: #2B2F3C;
-}
-
 #nav-link {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
@@ -197,8 +192,7 @@ header {
     margin: 0 15px;
     text-decoration: none;
     position: relative;
-    color: white;
-    background-color: #2B2F3C;
+    color: black;
 }
 
 
@@ -248,25 +242,13 @@ header {
 }
 
 .profile-avatar img {
-    width: 20rem;
-    height: 20rem;
+    width: 10rem;
+    height: 10rem;
     object-fit: cover;
     margin: 2rem;
-    border-radius: 3px;
+    border-radius: 50%;
 }
 
-/* .change-pic {
-    position: absolute;
-    background: transparent;
-    color: white;
-    left: 10rem;
-    top: 20rem;
-    opacity: 0;
-} */
-
-/* .change-pic:hover {
-    opacity: 1;
-} */
 
 .profile-name {
     font-family: 'Montserrat', sans-serif;
@@ -276,66 +258,9 @@ header {
     margin-left: 2rem;
 }
 
-.bio-text {
-    height: 10rem;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    margin-left: 2rem;
-    margin-top: 2rem;
-    /* border-top: 1px solid #c4c4c4;
-    border-bottom: 1px solid #c4c4c4;
-    border-right: 1px solid #c4c4c4; */
-
-}
-
 .profile-name-bio {
     display: flex;
     flex-direction: column;
-}
-
-.bio-btn {
-    padding: 0;
-    margin-left: 2rem;
-    margin-top: 2rem;
-    height: 2.5rem;
-    width: 14rem;
-    text-align: center;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: #2B2F3C;
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    border-radius: 30px;
-    border: none;
-    cursor: pointer;
-     background-image: linear-gradient(to right, #ffecd2 0%, #d68971 51%, #ffecd2 100%);
-}
-
-.bio-btn:hover {
-    background-position: right center;
-}
-
-.friends-btn {
-    padding: 0;
-    margin-top: 1.5rem;
-    height: 2rem;
-    width: 8rem;
-    text-align: center;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: #2B2F3C;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-weight: 200;
-    border-radius: 30px;
-    border: none;
-    cursor: pointer;
-    background-image: linear-gradient(to right, #fcd1f6 0%, #bc80b4 51%, #fcd1f6 100%);
-}
-
-.friends-btn:hover {
-    background-position: right center;
 }
 
 .textarea {

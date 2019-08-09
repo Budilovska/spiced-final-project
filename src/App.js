@@ -36,7 +36,7 @@ export default class App extends React.Component {
             <div className="wraps-all">
                 <BrowserRouter>
                     <header>
-                        <h1 id="small-logo">Brief.me</h1>
+                        <h1 id="small-logo">Logo</h1>
                         <div className="nav-container">
                             <Link to={"/chat"} id="nav-link">
                                 Chat

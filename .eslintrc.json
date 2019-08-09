@@ -1,0 +1,25 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "node": true
+    },
+    "plugins": ["react"],
+    "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 2018
+    },
+    "rules": {
+        "indent": ["error", 4, { "SwitchCase": 4 }],
+        "semi": ["error", "always"],
+        "no-console": 0,
+        "no-inner-declarations": 0,
+        "no-sparse-arrays": 0,
+        "no-unexpected-multiline": 0,
+        "no-unsafe-finally": 0,
+        "react/prop-types": 0,
+        "react/display-name": 0
+    }
+}

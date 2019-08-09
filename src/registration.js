@@ -22,7 +22,8 @@ export default class Registration extends React.Component {
                 first: this.state.first,
                 last: this.state.last,
                 email: this.state.email,
-                password: this.state.password
+                password: this.state.password,
+                role: this.state.role
             })
             .then(({ data }) => {
                 if (data.success) {
@@ -45,7 +46,9 @@ export default class Registration extends React.Component {
             <div className="welcome-fields">
                 <div className="buttons">
                     <p className="fake-link">Register</p>
-                    <Link className="login-link" to="/login">Log in</Link>
+                    <Link className="login-link" to="/login">
+                        Log in
+                    </Link>
                 </div>
                 {this.state.error && <div className="error">Ooops!</div>}
                 <input
@@ -69,7 +72,17 @@ export default class Registration extends React.Component {
                     type="password"
                     onChange={e => this.handleChange(e)}
                 />
-                <button className="login-btn" onClick={e => this.submit()}>Go!</button>
+                <select
+                    name="role"
+                    type="role"
+                    onChange={e => this.handleChange(e)}
+                >
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                </select>
+                <button className="login-btn" onClick={e => this.submit()}>
+                    Go!
+                </button>
             </div>
         );
     }

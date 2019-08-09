@@ -27,12 +27,6 @@ export default class Bioeditor extends React.Component {
                 draftBio: this.bio
             });
             console.log("data", data);
-            // if (!data) {
-            //     this.props.setBio(this.props.bio);
-            //     this.setState({
-            //         editing: false
-            //     });
-            // }
 
             this.props.setBio(data);
             this.setState({

@@ -11,14 +11,13 @@ export default class Welcome extends React.Component {
         return (
             <HashRouter>
                 <div className="welcome">
-                <h1 className="brief-me">Brief.me</h1>
-                <h2 id="welcome-h2">We are a community of film and advertising peers</h2>
-                <p id="welcome-p">Share your project, find crew members, land a job, brainstorm together, create</p>
-                <div className="welcome-container">
-                    <div>
-                        <Route exact path="/" component={Registration} />
-                        <Route path="/login" component={Login} />
-                    </div>
+                    <h1>Logo</h1>
+                    <h2 id="welcome-h2">Pick your career path</h2>
+                    <div className="welcome-container">
+                        <div>
+                            <Route exact path="/" component={Registration} />
+                            <Route path="/login" component={Login} />
+                        </div>
                     </div>
                 </div>
             </HashRouter>
