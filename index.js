@@ -90,8 +90,11 @@ app.post("/welcome", async (req, res) => {
     try {
         let hash = await bc.hashPassword(password);
         let result = await db.newUser(first, last, email, hash, role);
+
         req.session.userId = result.rows[0].id;
-        // req.session.role = result.rows[0].role;
+        req.session.role = result.rows[0].role;
+        console.log("cookie id", req.session.userId);
+        console.log("cookie role", req.session.role);
         res.json({ success: true });
     } catch (err) {
         console.log("err in POST /welcome", err);
@@ -112,7 +115,7 @@ app.post("/login", async (req, res) => {
         );
         // console.log("didMatch", didMatch);
         req.session.userId = result.rows[0].id;
-        // req.session.role = result.rows[0].role;
+        req.session.role = result.rows[0].role;
         res.json({ didMatch });
     } catch (err) {
         console.log("err in POST /login", err);
@@ -126,11 +129,22 @@ app.get("/logout", (req, res) => {
     res.redirect("/welcome");
 });
 
-//--------------------------------------------------------------
+//---------------------- career path -----------------------
 
+app.get(`/career/:path.json`, async (req, res) => {
+    try {
+        let result = await db.getTeacher(req.params.path);
+        console.log("result is", result);
+        res.json(result.rows);
+    } catch (err) {
+        console.log("err in GET career/:path", err);
+    }
+});
+
+//--------------------------------------------------------------
 app.get("/user", async (req, res) => {
     try {
-        const result = await db.getUserInfo(req.session.userId);
+        let result = await db.getUserInfo(req.session.userId);
         res.json(result.rows[0]);
     } catch (err) {
         console.log("err in GET /user", err);

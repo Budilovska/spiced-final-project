@@ -13,6 +13,7 @@ export default class Registration extends React.Component {
         this.setState({
             [e.target.name]: e.target.value
         });
+        console.log("this.state", this.state);
     }
     //------------------ handling submit registration ------------
 

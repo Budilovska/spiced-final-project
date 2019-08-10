@@ -7,6 +7,8 @@ import Bioeditor from "./bioeditor";
 import OtherProfile from "./otherProfile";
 import FindPeople from "./findPeople";
 import Friends from "./friends";
+import CareerBoards from "./careerBoards";
+import CareerPath from "./careerPath";
 import { Chat } from "./chat";
 import { PrivateChat } from "./privateChat";
 import { Route, BrowserRouter, Link } from "react-router-dom";
@@ -99,6 +101,26 @@ export default class App extends React.Component {
                                                 }
                                             />
                                         }
+                                    />
+                                )}
+                            />
+                            <Route
+                                path="/careers"
+                                render={props => (
+                                    <CareerBoards
+                                        key={props.match.url}
+                                        match={props.match}
+                                        history={props.history}
+                                    />
+                                )}
+                            />
+                            <Route
+                                path="/career/:path"
+                                render={props => (
+                                    <CareerPath
+                                        key={props.match.url}
+                                        match={props.match}
+                                        history={props.history}
                                     />
                                 )}
                             />

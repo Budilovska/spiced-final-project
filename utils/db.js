@@ -9,7 +9,7 @@ if (process.env.DATABASE_URL) {
 
 exports.newUser = function(first, last, email, password, role) {
     return db.query(
-        "INSERT INTO users (first, last, email, password, role) VALUES ($1, $2, $3, $4, $5) RETURNING id",
+        "INSERT INTO users (first, last, email, password, role) VALUES ($1, $2, $3, $4, $5) RETURNING *",
         [first, last, email, password, role]
     );
 };
@@ -21,6 +21,11 @@ exports.getPassword = function(email) {
     );
 };
 //
+
+exports.getTeacher = function(careerpath) {
+    return db.query("SELECT * FROM users WHERE careerpath=$1", [careerpath]);
+};
+
 // exports.getUserInfo = function(id) {
 //     return db.query("SELECT * FROM users WHERE users.id=$1", [id]);
 // };

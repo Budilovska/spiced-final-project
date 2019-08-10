@@ -12,6 +12,9 @@ export default class Welcome extends React.Component {
             <HashRouter>
                 <div className="welcome">
                     <h1>Logo</h1>
+
+                    <div className="intro_layers" />
+
                     <h2 id="welcome-h2">Pick your career path</h2>
                     <div className="welcome-container">
                         <div>
