@@ -134,7 +134,7 @@ app.get("/logout", (req, res) => {
 app.get(`/career/:path.json`, async (req, res) => {
     try {
         let result = await db.getTeacher(req.params.path);
-        console.log("result is", result);
+        // console.log("result is", result);
         res.json(result.rows);
     } catch (err) {
         console.log("err in GET career/:path", err);
@@ -192,7 +192,7 @@ app.post("/bio", async (req, res) => {
 
 ///------------------adding bio to database------------------
 app.post("/offer", async (req, res) => {
-    console.log("BODY", req.body.draftOffer);
+    // console.log("BODY", req.body.draftOffer);
     try {
         const result = await db.addOffer(
             req.session.userId,
@@ -254,26 +254,16 @@ app.get("/search/:val.json", async (req, res) => {
         });
     }
 });
-//------------------ check friendship ------------------------
-app.get("/friendship/:othProfId", async (req, res) => {
-    try {
-        const result = await db.checkFriendship(
-            req.session.userId,
-            req.params.othProfId
-        );
-        if (result.rows.length == 0) {
-            res.json({ buttonText: "Add friend" });
-        } else if (result.rows[0].accepted) {
-            res.json({ buttonText: "Unfriend" });
-        } else if (result.rows[0].sender_id == req.params.othProfId) {
-            res.json({ buttonText: "Accept friend request" });
-        } else {
-            res.json({ buttonText: "Cancel friend request" });
-        }
 
-        // res.json(result.rows[0]);
+app.post(`/favorites/:teacherId`, async (req, res) => {
+    try {
+        let result = await db.addFavoriteTeacher(
+            req.session.userId,
+            req.params.teacherId
+        );
+        res.json({ button: "Remove from favorites" });
     } catch (err) {
-        console.log("err in GET /frienship", err);
+        console.log("err in POST /favorites", err);
     }
 });
 
@@ -331,10 +321,6 @@ app.get("*", function(req, res) {
         res.sendFile(__dirname + "/index.html");
     }
 });
-
-// app.listen(8080, function() {
-//     console.log("I'm listening.");
-// });
 
 server.listen(8080, function() {
     console.log("I'm listening");

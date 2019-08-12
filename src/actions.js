@@ -1,5 +1,17 @@
 import axios from "./axios";
 
+export async function addToFavorites(id, name) {
+    const { data } = await axios.post(`/favorites/${id}`, {
+        name: name,
+        button: `Add ${name} to favorites`
+    });
+    console.log("data", data);
+    return {
+        type: "ADD_FAVORITES",
+        buttonText: data
+    };
+}
+
 export async function getFriends() {
     const { data } = await axios.get("/friends.json");
     // console.log("data from actions", data);
@@ -17,33 +29,6 @@ export async function unfriend(id) {
     return {
         type: "UNFRIEND",
         id
-    };
-}
-
-export async function accept(id) {
-    const { data } = await axios.post(`/friendship/${id}`, {
-        button: "Accept friend request"
-    });
-    // console.log("data", data);
-    return {
-        type: "ACCEPT",
-        id
-    };
-}
-
-export function newChatMessage(data) {
-    console.log("data", data);
-    return {
-        type: "NEW_CHAT_MESSAGE",
-        message: data
-    };
-}
-
-export function chatMessages(data) {
-    // console.log("10 messages data", data);
-    return {
-        type: "CHAT_MESSAGES",
-        message: data
     };
 }
 

@@ -9,7 +9,6 @@ import FindPeople from "./findPeople";
 import Friends from "./friends";
 import CareerBoards from "./careerBoards";
 import CareerPath from "./careerPath";
-import TeacherInfo from "./TeacherInfo";
 import Offer from "./offer";
 import { PrivateChat } from "./privateChat";
 import { Route, BrowserRouter, Link } from "react-router-dom";
@@ -73,6 +72,7 @@ export default class App extends React.Component {
                                         first={this.state.first}
                                         last={this.state.last}
                                         bio={this.state.bio}
+                                        id={this.state.id}
                                         avatar={
                                             <Avatar
                                                 id={this.state.id}
@@ -104,13 +104,6 @@ export default class App extends React.Component {
                                                         offer: data
                                                     })
                                                 }
-                                            />
-                                        }
-                                        teacherInfo={
-                                            <TeacherInfo
-                                                id={this.state.id}
-                                                first={this.state.first}
-                                                last={this.state.last}
                                             />
                                         }
                                     />

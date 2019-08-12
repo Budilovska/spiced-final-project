@@ -59,6 +59,14 @@ exports.insertTeachersChoice = function(id, careerpath) {
         [id, careerpath]
     );
 };
+
+exports.addFavoriteTeacher = function(sender_id, receiver_id) {
+    return db.query(
+        "INSERT INTO favorites (sender_id, receiver_id) VALUES ($1, $2) RETURNING *",
+        [sender_id, receiver_id]
+    );
+};
+
 //
 // exports.latestUsers = function() {
 //     return db.query("SELECT * FROM users ORDER BY id DESC LIMIT 3");

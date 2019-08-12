@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "./axios";
 import Checkbox from "./checkbox";
 
-export default function TeacherInfo() {
+export default function TeacherInfo(props) {
     const [checkedItems, setCheckedItems] = useState({});
 
     async function handleChange(e) {
@@ -22,6 +22,7 @@ export default function TeacherInfo() {
                         expertise: expertise[0]
                     });
                     console.log("data", data);
+                    props.checkboxIsVisible(false);
                 } catch (err) {
                     console.log("err in GET /users", err);
                 }
@@ -66,19 +67,25 @@ export default function TeacherInfo() {
     ];
 
     return (
-        <div>
-            <label>Your area of expertise {checkedItems["check-box-1"]} </label>
-            <br />
-            {checkboxes.map(item => (
-                <label key={item.key}>
-                    {item.name}
-                    <Checkbox
-                        name={item.name}
-                        checked={checkedItems[item.name]}
-                        onChange={handleChange}
-                    />
+        <div className="pick-expertise">
+            <div className="expertise-container">
+                <h2>Thank you for joining us as a mentor, {props.first}!</h2>
+                <label>
+                    Pick your area of expertise {checkedItems["check-box-1"]}{" "}
                 </label>
-            ))}
+                <br />
+
+                {checkboxes.map(item => (
+                    <label key={item.key}>
+                        {item.name}
+                        <Checkbox
+                            name={item.name}
+                            checked={checkedItems[item.name]}
+                            onChange={handleChange}
+                        />
+                    </label>
+                ))}
+            </div>
         </div>
     );
 }

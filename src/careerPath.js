@@ -7,9 +7,12 @@ import { addToFavorites } from "./actions";
 export default function CareerPath(props) {
     const dispatch = useDispatch();
     const [teacher, setTeacher] = useState();
-    const [button, setButton] = useState();
     const [careerPath, setPath] = useState();
+
+    const button = useSelector(state => state.button);
     const favorites = useSelector(state => state.favorites);
+
+    console.log("button", button);
 
     useEffect(() => {
         (async () => {
@@ -72,7 +75,9 @@ export default function CareerPath(props) {
                             <button
                                 className="favorites-btn"
                                 onClick={e =>
-                                    dispatch(addToFavorites(t.teacher_id))
+                                    dispatch(
+                                        addToFavorites(t.teacher_id, t.first)
+                                    )
                                 }
                             >
                                 Add {t.first} to favorites
