@@ -150,6 +150,22 @@ app.get("/user", async (req, res) => {
         console.log("err in GET /user", err);
     }
 });
+//--------------------------------------------------------------
+
+app.post("/choice", async (req, res) => {
+    if (req.body.expertise) {
+        try {
+            let result = await db.insertTeachersChoice(
+                req.session.userId,
+                req.body.expertise
+            );
+            console.log("result", result.rows);
+            res.json(result.rows[0]);
+        } catch (err) {
+            console.log("err in GET /choice", err);
+        }
+    }
+});
 
 //--------------------------------------------------------
 //single indicates that we are only expecting one file. The string passed to single is the name of the field in the request.
@@ -171,6 +187,20 @@ app.post("/bio", async (req, res) => {
         res.json(result.rows[0].bio);
     } catch (err) {
         console.log("err in POST /bio", err);
+    }
+});
+
+///------------------adding bio to database------------------
+app.post("/offer", async (req, res) => {
+    console.log("BODY", req.body.draftOffer);
+    try {
+        const result = await db.addOffer(
+            req.session.userId,
+            req.body.draftOffer
+        );
+        res.json(result.rows[0].offer);
+    } catch (err) {
+        console.log("err in POST /offer", err);
     }
 });
 
@@ -331,28 +361,6 @@ io.on("connection", async socket => {
     usersConnectedNow.push(newUserConnected);
 
     console.log("connected users:", usersConnectedNow);
-
-    const result = await db.lastTenMessages();
-    result.rows.forEach(i => {
-        i.created_at = moment(i.created_at, moment.ISO_8601).fromNow();
-    });
-
-    io.emit("chatMessages", result.rows);
-
-    socket.on("new chat message", async msg => {
-        // console.log(`message is: ${msg} from ${userId}`);
-        const message = await db.addMessage(msg, userId);
-        const user = await db.getUserInfo(userId);
-        message.rows[0].created_at = moment(
-            message.rows[0].created_at,
-            moment.ISO_8601
-        ).fromNow();
-
-        const result = { ...message.rows[0], ...user.rows[0] };
-        // console.log("result", result);
-
-        io.sockets.emit("newChatMessage", result);
-    });
 
     //--------------------- last private messages -------------------------
     //

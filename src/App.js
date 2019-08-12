@@ -9,7 +9,8 @@ import FindPeople from "./findPeople";
 import Friends from "./friends";
 import CareerBoards from "./careerBoards";
 import CareerPath from "./careerPath";
-import { Chat } from "./chat";
+import TeacherInfo from "./TeacherInfo";
+import Offer from "./offer";
 import { PrivateChat } from "./privateChat";
 import { Route, BrowserRouter, Link } from "react-router-dom";
 
@@ -40,14 +41,8 @@ export default class App extends React.Component {
                     <header>
                         <h1 id="small-logo">Logo</h1>
                         <div className="nav-container">
-                            <Link to={"/chat"} id="nav-link">
-                                Chat
-                            </Link>
                             <Link to={"/users"} id="nav-link">
                                 Search
-                            </Link>
-                            <Link to={"/friends"} id="nav-link">
-                                Friend requests
                             </Link>
                             <Link to={"/"} id="nav-link">
                                 My profile
@@ -101,6 +96,23 @@ export default class App extends React.Component {
                                                 }
                                             />
                                         }
+                                        offer={
+                                            <Offer
+                                                offer={this.state.offer}
+                                                setOffer={data =>
+                                                    this.setState({
+                                                        offer: data
+                                                    })
+                                                }
+                                            />
+                                        }
+                                        teacherInfo={
+                                            <TeacherInfo
+                                                id={this.state.id}
+                                                first={this.state.first}
+                                                last={this.state.last}
+                                            />
+                                        }
                                     />
                                 )}
                             />
@@ -142,11 +154,7 @@ export default class App extends React.Component {
                                 path="/friends"
                                 render={props => <Friends />}
                             />
-                            <Route
-                                exact
-                                path="/chat"
-                                render={props => <Chat />}
-                            />
+
                             <Route
                                 path="/chat/:id"
                                 render={props => (

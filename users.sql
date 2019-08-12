@@ -17,8 +17,21 @@ CREATE TABLE users (
 CREATE TABLE skills (
     id SERIAL PRIMARY KEY,
     teacher_id INT REFERENCES users(id),
-    skill VARCHAR(1000),
-)
+    skill VARCHAR(100)
+);
+
+CREATE TABLE offers (
+    id SERIAL PRIMARY KEY,
+    teacher_id INT REFERENCES users(id),
+    offer VARCHAR(1000)
+);
+
+CREATE TABLE favorites(
+	id SERIAL PRIMARY KEY,
+	sender_id INT REFERENCES users(id),
+    receiver_id INT REFERENCES users(id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
 -- CREATE TABLE friendships(
 -- 	id SERIAL PRIMARY KEY,
@@ -35,10 +48,10 @@ CREATE TABLE skills (
 --     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 -- );
 --
--- CREATE TABLE private (
---     id SERIAL PRIMARY KEY,
---     sender_id INT NOT NULL REFERENCES users(id),
---     receiver_id INT NOT NULL REFERENCES users(id),
---     message VARCHAR(1000),
---     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
--- );
+CREATE TABLE private (
+    id SERIAL PRIMARY KEY,
+    sender_id INT NOT NULL REFERENCES users(id),
+    receiver_id INT NOT NULL REFERENCES users(id),
+    message VARCHAR(1000),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

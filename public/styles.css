@@ -46,7 +46,7 @@ background-image: url(/logo-giphy.gif);
     align-items: center;
 }
 
-input {
+/* input {
     -webkit-appearance: none;
    outline: none;
    border: 1px solid #282828;
@@ -59,7 +59,7 @@ input {
     width: 19rem;
     height: 2rem;
 
-}
+} */
 
 .buttons {
     grid-row: 1 / 2;
@@ -544,4 +544,43 @@ svg{
     border: 1px solid black;
     cursor: pointer;
     margin: 1.5rem;
+}
+
+.checkbox-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.teachers-container {
+    width: 300px;
+    height: 300px;
+    border: 1px solid magenta;
+    margin: 1.5rem;
+
+}
+
+.display-teachers{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.teacher-avatar {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.offer-text {
+        font-family: 'Roboto', sans-serif;
+        font-size: 20px;
+}
+
+.career-description {
+    height: 40rem;
+}
+
+.path-description{
+    width: 60%;
 }

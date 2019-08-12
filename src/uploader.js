@@ -51,25 +51,3 @@ export default class Uploader extends React.Component {
         );
     }
 }
-
-// create a form, make Multer stuff, S3 stuff and formData
-//
-// here we make axios post to add image,
-//
-// insert image url
-//
-//
-//
-// 1. make ajax req with formData thing.
-// when we select image, we won't need to click any button..
-// as soon as image is chosen - just start upload
-//
-// make post with RETURNING url
-//
-// now uoploader need to give this information to the proifle pic: in appear    <Uploader done={image => this.setState({ image })} />
-//
-// after image is uploaded - we want uploader to automaticcly close
-// and we close uploader with X too
-
-//when we click on profile pic, that is a part of App, need to make uploader visible
-//we make sure when iuploader is open - we can't click on anything, but X to close

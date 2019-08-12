@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "./axios";
 
-export default class Bioeditor extends React.Component {
+export default class Offer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -12,18 +12,18 @@ export default class Bioeditor extends React.Component {
 
     //------------------- getting textarea value ------------------
     handleChange(e) {
-        this.bio = e.target.value;
+        this.offer = e.target.value;
     }
     //------------------- clicked save bio -----------------------
     async submit() {
         console.log("state", this.state);
         try {
-            const { data } = await axios.post("/bio", {
-                draftBio: this.bio
+            const { data } = await axios.post("/offer", {
+                draftOffer: this.offer
             });
             console.log("data", data);
 
-            this.props.setBio(data);
+            this.props.setOffer(data);
             this.setState({
                 editing: false
             });
@@ -33,8 +33,8 @@ export default class Bioeditor extends React.Component {
     }
 
     clickedEdit() {
-        if (!this.bio) {
-            this.bio = this.props.bio;
+        if (!this.offer) {
+            this.offer = this.props.offer;
         }
         this.setState({
             editing: true
@@ -44,11 +44,16 @@ export default class Bioeditor extends React.Component {
     render() {
         return (
             <div>
-                {this.props.bio && !this.state.editing && (
+                {this.props.offer && !this.state.editing && (
                     <div>
-                        <p className="bio-text">{this.props.bio}</p>
-                        <button className="bio-btn" onClick={this.clickedEdit}>
-                            Edit
+                        <p className="offer-text">
+                            Your new offer is: {this.props.offer}
+                        </p>
+                        <button
+                            className="offer-btn"
+                            onClick={this.clickedEdit}
+                        >
+                            Add another offer
                         </button>
                     </div>
                 )}
@@ -56,13 +61,12 @@ export default class Bioeditor extends React.Component {
                 {this.state.editing && (
                     <div className="text-area">
                         <textarea
-                            defaultValue={this.props.bio}
-                            name="draftBio"
+                            name="draftOffer"
                             onChange={e => this.handleChange(e)}
                         />
                         <div>
                             <button
-                                className="bio-btn"
+                                className="offer-btn"
                                 onClick={e => this.submit()}
                             >
                                 Save
@@ -70,16 +74,16 @@ export default class Bioeditor extends React.Component {
                         </div>
                     </div>
                 )}
-                {!this.props.bio && !this.state.editing && (
+                {!this.props.offer && !this.state.editing && (
                     <button
-                        className="bio-btn"
+                        className="offer-btn"
                         onClick={e =>
                             this.setState({
                                 editing: true
                             })
                         }
                     >
-                        Tell us about yourself
+                        Add your offer
                     </button>
                 )}
             </div>

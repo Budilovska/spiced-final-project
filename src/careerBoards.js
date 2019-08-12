@@ -17,13 +17,16 @@ export default function CareerBoards(props) {
 
     return (
         <div className="boards-container">
-            <div className="board" onClick={submit}>
-                <p>Code</p>
-            </div>
-
-            <div className="board" onClick={submit}>
-                <p>Design</p>
-            </div>
+            <Link to={"/career/code"} id="nav-link">
+                <div className="board" onClick={submit}>
+                    <p>Code</p>
+                </div>
+            </Link>
+            <Link to={"/career/design"} id="nav-link">
+                <div className="board" onClick={submit}>
+                    <p>Design</p>
+                </div>
+            </Link>
             <Link to={"/career/film"} id="nav-link">
                 <div className="board" onClick={submit}>
                     <p>Film</p>
