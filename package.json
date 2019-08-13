@@ -39,6 +39,7 @@
         "react-big-calendar": "^0.22.0",
         "react-booking": "^1.1.1",
         "react-dom": "^16.9.0-alpha.0",
+        "react-player": "^1.11.2",
         "react-redux": "^7.1.0",
         "react-router": "^5.0.1",
         "react-router-dom": "^5.0.1",

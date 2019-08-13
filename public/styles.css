@@ -426,17 +426,27 @@ textarea {
     -webkit-animation: bubble 5s linear infinite;
     animation: bubble 5s linear infinite;
     background-image: linear-gradient(to top, #673AB7 0%, #E91E63 100%);
-    display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 730px;
+    max-width: 900px;
     padding: 187px 63px;
-    position: relative;
-    width: 400px;
+    bottom: -50rem;
+    left: -10rem;
+    width: 500px;
+    height: 500px;
     z-index: 1;
     left: 50%;
     transform: translateX(-50%);
 }
+
+#bubble2 {
+    top: 0rem;
+    right: -100rem;
+    width: 700px;
+    height: 700px;
+    position: absolute;
+}
+
 @-webkit-keyframes bubble {
 	0%,
 	100% {
@@ -578,11 +588,11 @@ svg{
 }
 
 .career-description {
-    height: 40rem;
+    height: 20rem;
 }
 
 .path-description{
-    width: 60%;
+    width: 70%;
 }
 
 .pick-expertise{
@@ -602,4 +612,60 @@ svg{
     height: 20rem;
     background: white;
     opacity: 1;
+}
+
+/* .video {
+    position: absolute;
+    right: 0;
+} */
+
+#player {
+    height: 1000px;
+    margin: 0;
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.young-pros {
+    font-size: 100px;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+
+.courses-container {
+    display: flex;
+    flex-direction: row;
+    width: 70rem;
+    overflow: scroll;
+}
+
+.course-img {
+    width: 7rem;
+    height: 7rem;
+    object-fit: cover;
+}
+
+.course-title {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.course-item {
+    margin: 1rem;
+    position: relative;
+}
+
+.add-to-fav-icon {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    background: transparent;
+    cursor: pointer;
 }

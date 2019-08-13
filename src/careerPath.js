@@ -3,6 +3,7 @@ import axios from "./axios";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToFavorites } from "./actions";
+import Courses from "./courses";
 
 export default function CareerPath(props) {
     const dispatch = useDispatch();
@@ -57,6 +58,7 @@ export default function CareerPath(props) {
                     </div>
                 )}
             </div>
+            <Courses />
             <div>
                 <h2>Pick an offer from a mentor</h2>
             </div>

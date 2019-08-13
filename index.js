@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
 const moment = require("moment");
+const axios = require("axios");
 //----------------------socket.io--------------------------------
 //this has to happen after const app = express() line
 const server = require("http").Server(app);
@@ -20,6 +21,7 @@ const uidSafe = require("uid-safe");
 const path = require("path");
 const s3 = require("./s3");
 const config = require("./config");
+const configUdemy = require("./configUdemy");
 
 //-------- multer saves the file to uploads directory -------//
 
@@ -37,13 +39,6 @@ app.use(cookieSessionMiddleware);
 io.use(function(socket, next) {
     cookieSessionMiddleware(socket.request, socket.request.res, next);
 });
-
-// app.use(
-//     cookieSession({
-//         secret: `I'm always hungry.`,
-//         maxAge: 1000 * 60 * 60 * 24 * 14 //in two weeks cookie will be deleted
-//     })
-// );
 
 app.use(csurf());
 
@@ -264,6 +259,42 @@ app.post(`/favorites/:teacherId`, async (req, res) => {
         res.json({ button: "Remove from favorites" });
     } catch (err) {
         console.log("err in POST /favorites", err);
+    }
+});
+
+//------------------------------- UDEMY API --------------------------
+
+app.get("/courses", function(req, res) {
+    let url =
+        "https://www.udemy.com/api-2.0/courses/?search=%20Web%20Development&price=price-free&instructional_level=beginner&ordering=price-low-to-high";
+    axios
+        .get(url, configUdemy)
+        .then(({ data }) => {
+            // console.log("data from udemy", data);
+            res.json(data.results);
+        })
+        .catch(err => {
+            console.log("err in POST /favorites", err);
+        });
+});
+
+//------------------------- adding course to favorites ---------------------
+app.post("/fav-course", async (req, res) => {
+    console.log("id", req.body.id);
+    console.log("title", req.body.title);
+    console.log("img", req.body.image_480x270);
+    console.log("url", "https://www.udemy.com" + req.body.url);
+
+    try {
+        let result = await db.addFavCourse(
+            req.session.userId,
+            req.body.id,
+            req.body.title,
+            req.body.image_480x270,
+            "https://www.udemy.com" + req.body.url
+        );
+    } catch (err) {
+        console.log("err in post /fav-course", err);
     }
 });
 
