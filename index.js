@@ -239,9 +239,6 @@ app.get("/search/:val.json", async (req, res) => {
         const result = await db.searchUser(req.params.val);
         // console.log(result.rows);
         res.json(result.rows);
-        // if (result.rows.length == 0) {
-        //     throw new Error("no results");
-        // }
     } catch (err) {
         console.log("err in GET /users", err);
         res.json({
@@ -264,7 +261,11 @@ app.post(`/favorites/:teacherId`, async (req, res) => {
 
 //------------------------------- UDEMY API --------------------------
 
-app.get("/courses", function(req, res) {
+app.get("/courses/", function(req, res) {
+    console.log("BODY", req.body);
+    // let url2 =
+    //     "https://www.udemy.com/api-2.0/courses/?search=UI%20UX%20Design&price=price-free&instructional_level=beginner&ordering=price-low-to-high";
+
     let url =
         "https://www.udemy.com/api-2.0/courses/?search=%20Web%20Development&price=price-free&instructional_level=beginner&ordering=price-low-to-high";
     axios
@@ -294,7 +295,7 @@ app.post("/fav-course", async (req, res) => {
     }
 });
 
-//------------------ send friend request ------------------------
+//------------------ render favorite courses to profile --------------------
 
 app.get("/get-fav-courses", async (req, res) => {
     try {
@@ -305,9 +306,22 @@ app.get("/get-fav-courses", async (req, res) => {
     }
 });
 
+//------------------ remove course from favorites -------------------
+
+app.post("/delete-course", async (req, res) => {
+    try {
+        let result = await db.removeFromFav(
+            req.session.userId,
+            req.body.image_id
+        );
+        res.json({ deletedId: req.body.image_id });
+    } catch (err) {
+        console.log("err in post /delete-course", err);
+    }
+});
+
 app.post("/friendship/:othProfId", async (req, res) => {
     try {
-        console.log(req.body.button);
         if (req.body.button == "Add friend") {
             const result = await db.sendFriendRequest(
                 req.session.userId,

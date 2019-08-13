@@ -13,7 +13,7 @@ export default class Registration extends React.Component {
         this.setState({
             [e.target.name]: e.target.value
         });
-        console.log("this.state", this.state);
+        // console.log("this.state", this.state);
     }
     //------------------ handling submit registration ------------
 
@@ -35,7 +35,7 @@ export default class Registration extends React.Component {
                         error: true
                     });
                 }
-                console.log("data", data.success);
+                // console.log("data", data.success);
             })
             .catch(function(err) {
                 console.log("err in POST /welcome", err);

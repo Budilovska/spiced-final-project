@@ -1,14 +1,22 @@
 import axios from "./axios";
 
-export async function addToFavorites(id, name) {
-    const { data } = await axios.post(`/favorites/${id}`, {
-        name: name,
-        button: `Add ${name} to favorites`
-    });
-    console.log("data", data);
+// export async function addToFavorites(id, name) {
+//     const { data } = await axios.post(`/favorites/${id}`, {
+//         name: name,
+//         button: `Add ${name} to favorites`
+//     });
+//     console.log("data", data);
+//     return {
+//         type: "ADD_FAVORITES",
+//         buttonText: data
+//     };
+// }
+
+export async function setFavoriteCourses(data) {
+    console.log("data from actions", data);
     return {
-        type: "ADD_FAVORITES",
-        buttonText: data
+        type: "FAV_COURSES",
+        data: data
     };
 }
 

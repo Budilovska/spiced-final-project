@@ -57,7 +57,7 @@ export default function Profile(props) {
                     <Link to={"/careers"} id="nav-link">
                         Pick your career path
                     </Link>
-                    <FavoriteCourses id={props.id} />
+                    <FavoriteCourses />
                 </div>
             ) : (
                 <div className="profile-container">

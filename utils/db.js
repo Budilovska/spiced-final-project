@@ -77,6 +77,14 @@ exports.addFavCourse = function(student_id, image_id, title, image, url) {
 exports.getAllFavCourses = function(id) {
     return db.query("SELECT * FROM courses WHERE student_id=$1", [id]);
 };
+
+exports.removeFromFav = function(student_id, image_id) {
+    return db.query(
+        "DELETE FROM courses WHERE (student_id = $1 AND image_id = $2);",
+        [student_id, image_id]
+    );
+};
+
 //
 // exports.latestUsers = function() {
 //     return db.query("SELECT * FROM users ORDER BY id DESC LIMIT 3");

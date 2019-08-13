@@ -5,6 +5,14 @@ export default function(state = {}, action) {
             friends: action.friends
         };
     }
+
+    if (action.type == "FAV_COURSES") {
+        state = {
+            ...state,
+            favcourses: action.data
+        };
+    }
+
     if (action.type == "UNFRIEND") {
         state = {
             ...state,

@@ -1,15 +1,31 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import axios from "./axios";
 
 export default function Courses(props) {
     const [courses, setCourses] = useState();
-    const [favCourseId, setFavCourseId] = useState();
+    const favcourses = useSelector(state => state.favcourses);
+    console.log("props:", props.careerPath);
 
     useEffect(() => {
         (async () => {
             try {
-                const { data } = await axios.get("/courses");
-                console.log("data", data);
+                const { data } = await axios.get("/courses", {
+                    careerPath: props.careerPath
+                });
+                console.log("data from API", data);
+
+                // if (courses) {
+                //     const arr = data.forEach(i =>
+                //         favcourses.forEach(j => {
+                //             if (i.id != j.image_id) {
+                //                 arr.push(i);
+                //             }
+                //         })
+                //     );
+                //     console.log("new array", arr);
+                // }
+
                 setCourses(data);
             } catch (err) {
                 console.log("err in GET /courses", err);
@@ -18,21 +34,13 @@ export default function Courses(props) {
     }, []);
 
     async function submit(course) {
-        console.log("clicked on a button");
-        console.log(course);
         try {
             const { data } = await axios.post("/fav-course", course);
-            console.log("data", data.image_id);
-            setFavCourseId();
-            console.log(courses);
-            // const newArray = courses.filter(i => i.id !== data.image_id);
+            // console.log(courses);
             const newList = courses.filter(
                 course => course.id != data.image_id
             );
-
             setCourses(newList);
-
-            // courses.filter(i => courses)
         } catch (err) {
             console.log("err in GET /fav-course", err);
         }
@@ -57,7 +65,7 @@ export default function Courses(props) {
                             <h2 className="course-title">{course.title}</h2>
                             <img
                                 className="add-to-fav-icon"
-                                src="/add-to-favorites-icon-1-128x128.png"
+                                src="/add-to-favorites-icon.png"
                                 onClick={() => submit(course)}
                             />
                         </div>

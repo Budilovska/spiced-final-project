@@ -58,7 +58,7 @@ export default function CareerPath(props) {
                     </div>
                 )}
             </div>
-            <Courses />
+            <Courses careerPath={careerPath} />
             <div>
                 <h2>Pick an offer from a mentor</h2>
             </div>
@@ -74,16 +74,6 @@ export default function CareerPath(props) {
                             <p className="offer-text">
                                 {t.first} {t.last} offers {t.offer}
                             </p>
-                            <button
-                                className="favorites-btn"
-                                onClick={e =>
-                                    dispatch(
-                                        addToFavorites(t.teacher_id, t.first)
-                                    )
-                                }
-                            >
-                                Add {t.first} to favorites
-                            </button>
                             <Link
                                 className="link-to-chat"
                                 to={`/chat/${t.teacher_id}`}
