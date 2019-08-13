@@ -280,11 +280,6 @@ app.get("/courses", function(req, res) {
 
 //------------------------- adding course to favorites ---------------------
 app.post("/fav-course", async (req, res) => {
-    console.log("id", req.body.id);
-    console.log("title", req.body.title);
-    console.log("img", req.body.image_480x270);
-    console.log("url", "https://www.udemy.com" + req.body.url);
-
     try {
         let result = await db.addFavCourse(
             req.session.userId,
@@ -293,12 +288,23 @@ app.post("/fav-course", async (req, res) => {
             req.body.image_480x270,
             "https://www.udemy.com" + req.body.url
         );
+        res.json(result.rows[0]);
     } catch (err) {
         console.log("err in post /fav-course", err);
     }
 });
 
 //------------------ send friend request ------------------------
+
+app.get("/get-fav-courses", async (req, res) => {
+    try {
+        let result = await db.getAllFavCourses(req.session.userId);
+        res.json(result.rows);
+    } catch (err) {
+        console.log("err in post /get-fav-courses", err);
+    }
+});
+
 app.post("/friendship/:othProfId", async (req, res) => {
     try {
         console.log(req.body.button);

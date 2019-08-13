@@ -33,6 +33,19 @@ CREATE TABLE favorites(
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE courses(
+	id SERIAL PRIMARY KEY,
+	student_id INT REFERENCES users(id),
+    image_id VARCHAR(100) NOT NULL,
+    title VARCHAR(1000) NOT NULL,
+    image VARCHAR(1000),
+    url VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+
 -- CREATE TABLE friendships(
 -- 	id SERIAL PRIMARY KEY,
 -- 	sender_id INT REFERENCES users(id),

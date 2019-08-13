@@ -3,7 +3,7 @@ import axios from "./axios";
 
 export default function Courses(props) {
     const [courses, setCourses] = useState();
-    const [id, setId] = useState();
+    const [favCourseId, setFavCourseId] = useState();
 
     useEffect(() => {
         (async () => {
@@ -22,7 +22,17 @@ export default function Courses(props) {
         console.log(course);
         try {
             const { data } = await axios.post("/fav-course", course);
-            console.log("data", data);
+            console.log("data", data.image_id);
+            setFavCourseId();
+            console.log(courses);
+            // const newArray = courses.filter(i => i.id !== data.image_id);
+            const newList = courses.filter(
+                course => course.id != data.image_id
+            );
+
+            setCourses(newList);
+
+            // courses.filter(i => courses)
         } catch (err) {
             console.log("err in GET /fav-course", err);
         }

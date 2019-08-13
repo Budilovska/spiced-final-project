@@ -67,6 +67,16 @@ exports.addFavoriteTeacher = function(sender_id, receiver_id) {
     );
 };
 
+exports.addFavCourse = function(student_id, image_id, title, image, url) {
+    return db.query(
+        "INSERT INTO courses (student_id, image_id, title, image, url) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+        [student_id, image_id, title, image, url]
+    );
+};
+
+exports.getAllFavCourses = function(id) {
+    return db.query("SELECT * FROM courses WHERE student_id=$1", [id]);
+};
 //
 // exports.latestUsers = function() {
 //     return db.query("SELECT * FROM users ORDER BY id DESC LIMIT 3");
