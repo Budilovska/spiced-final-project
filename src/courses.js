@@ -4,8 +4,19 @@ import axios from "./axios";
 
 export default function Courses(props) {
     const [courses, setCourses] = useState();
+    const [sortedCourses, setsortedCourses] = useState(false);
     const favcourses = useSelector(state => state.favcourses);
-    // console.log("favcourses:", favcourses);
+    console.log("favcourses:", favcourses);
+    if (favcourses && courses && !sortedCourses) {
+        const favId = favcourses.map(course => Number(course.image_id));
+        console.log("favId", favId);
+        const sorted = courses.filter(course => !favId.includes(course.id));
+        console.log("sorted", sorted);
+        setCourses(sorted);
+        setsortedCourses(true);
+    }
+
+    useEffect(() => {}, [favcourses, courses]);
 
     useEffect(
         () => {
@@ -16,33 +27,6 @@ export default function Courses(props) {
                         "/courses/" + props.careerPath
                     );
                     console.log("data from API", data);
-                    //
-                    // const arr = [];
-
-                    // data.forEach(i => {
-                    //     // console.log("data.id:", i.id);
-                    //     let finalarr = [];
-                    //     favcourses.forEach(j => {
-                    //         if (i.id != j.image_id) {
-                    //             finalarr.push(i);
-                    //         }
-                    //     });
-                    //
-                    //     console.log("final array: ", finalarr);
-                    // });
-
-                    // if (i.id != j.image_id) {
-                    //     console.log("what we want to show: ", i);
-                    // }
-
-                    // favcourses.forEach(j => {
-                    //     if (i.id != j.image_id) {
-                    //         arr.push(i);
-                    //     }
-                    // })
-
-                    // console.log("favorite courses:", favcourses);
-                    // console.log("new array", arr);
 
                     setCourses(data);
                 } catch (err) {

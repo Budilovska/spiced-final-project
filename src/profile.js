@@ -26,22 +26,6 @@ export default function Profile(props) {
         })();
     }, []);
 
-    useEffect(() => {
-        console.log("mounted");
-        (async () => {
-            try {
-                const { data } = await axios.get("/user");
-                console.log("data", data);
-                if (data.careerpath) {
-                    checkboxIsVisible(false);
-                }
-                setRole(data.role);
-            } catch (err) {
-                console.log("err in GET /users", err);
-            }
-        })();
-    }, []);
-
     return (
         <div>
             {role == "student" ? (

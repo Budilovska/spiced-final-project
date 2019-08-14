@@ -40,10 +40,7 @@ export default class Login extends React.Component {
     render() {
         return (
             <div className="welcome-fields">
-            <div className="buttons">
-                <Link className="login-link" to="/">Register</Link>
-                <p className="fake-link">Log in</p>
-                </div>
+
                 {this.state.error && (
                     <div className="error">
                         Something went wrong! Try again or register.
@@ -60,7 +57,8 @@ export default class Login extends React.Component {
                     type="password"
                     onChange={e => this.handleChange(e)}
                 />
-                <button className="login-btn" onClick={e => this.login()}>Go!</button>
+                <Link className="login-link" to="/">Register?</Link>
+                <button className="login-btn" onClick={e => this.login()}>Login</button>
             </div>
         );
     }

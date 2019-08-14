@@ -38,6 +38,11 @@ export default class App extends React.Component {
             <div className="wraps-all">
                 <BrowserRouter>
                     <header>
+                    <div className="myLogo">
+                    <img className="myLogoImg" src="blob-shape (2).svg" />
+                    <img className="myLogoImg" src="blob-shape (3).svg" />
+                    <img className="myLogoImg" src="blob-shape (4).svg" />
+                    </div>
                         <h1 id="small-logo">Logo</h1>
                         <div className="nav-container">
                             <Link to={"/users"} id="nav-link">

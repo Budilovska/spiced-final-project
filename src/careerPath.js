@@ -21,6 +21,7 @@ export default function CareerPath(props) {
                 const path = props.match.params.path;
                 const { data } = await axios.get(`/career/${path}.json`);
                 console.log("data", data);
+                console.log("teachers data", data);
                 setTeacher(data);
                 setPath(data[0].careerpath);
             } catch (err) {
@@ -66,11 +67,13 @@ export default function CareerPath(props) {
                 {teacher &&
                     teacher.map(t => (
                         <div key={t.id} className="teachers-container">
-                            <img
-                                className="teacher-avatar"
-                                src={t.image}
-                                alt={`${t.first} ${t.last}`}
-                            />
+                            <Link to={`/user/${t.teacher_id}`}>
+                                <img
+                                    className="teacher-avatar"
+                                    src={t.image}
+                                    alt={`${t.first} ${t.last}`}
+                                />
+                            </Link>
                             <p className="offer-text">
                                 {t.first} {t.last} offers {t.offer}
                             </p>

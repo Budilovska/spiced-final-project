@@ -45,13 +45,7 @@ export default class Registration extends React.Component {
     render() {
         return (
             <div className="welcome-fields">
-                <div className="buttons">
-                    <p className="fake-link">Register</p>
-                    <Link className="login-link" to="/login">
-                        Log in
-                    </Link>
-                </div>
-                {this.state.error && <div className="error">Ooops!</div>}
+                {this.state.error && <div className="error">Something went wrong</div>}
                 <input
                     name="first"
                     placeholder="first"
@@ -78,11 +72,14 @@ export default class Registration extends React.Component {
                     type="role"
                     onChange={e => this.handleChange(e)}
                 >
-                    <option value="student">Student</option>
-                    <option value="teacher">Teacher</option>
+                    <option value="student">student</option>
+                    <option value="teacher">teacher</option>
                 </select>
+                <Link className="login-link" to="/login">
+                    Log in?
+                </Link>
                 <button className="login-btn" onClick={e => this.submit()}>
-                    Go!
+                    Register
                 </button>
             </div>
         );
