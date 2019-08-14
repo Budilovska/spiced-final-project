@@ -261,13 +261,29 @@ app.post(`/favorites/:teacherId`, async (req, res) => {
 
 //------------------------------- UDEMY API --------------------------
 
-app.get("/courses/", function(req, res) {
-    console.log("BODY", req.body);
-    // let url2 =
-    //     "https://www.udemy.com/api-2.0/courses/?search=UI%20UX%20Design&price=price-free&instructional_level=beginner&ordering=price-low-to-high";
+app.get("/courses/:course", function(req, res) {
+    console.log("BODY", req.params.course);
+    var url;
+    if (req.params.course == "code") {
+        url = `https://www.udemy.com/api-2.0/courses/?search=web%20development&price=price-free&instructional_level=beginner&ordering=highest-rated
+    `;
+    } else if (req.params.course == "design") {
+        url = `https://www.udemy.com/api-2.0/courses/?search=web%20design&price=price-free&instructional_level=beginner&ordering=highest-rated
+    `;
+    } else if (req.params.course == "datascience") {
+        url = `https://www.udemy.com/api-2.0/courses/?search=data%20science&price=price-free&instructional_level=beginner&ordering=highest-rated
+    `;
+    } else if (req.params.course == "marketing") {
+        url = `https://www.udemy.com/api-2.0/courses/?search=digital%20marketing&price=price-free&instructional_level=beginner&ordering=highest-rated
+`;
+    } else if (req.params.course == "smm") {
+        url = `https://www.udemy.com/api-2.0/courses/?search=social%20media%20management&price=price-free&instructional_level=beginner&ordering=highest-rated
+`;
+    } else if (req.params.course == "product") {
+        url = `https://www.udemy.com/api-2.0/courses/?search=product%20management&price=price-free&instructional_level=beginner&ordering=highest-rated
+`;
+    }
 
-    let url =
-        "https://www.udemy.com/api-2.0/courses/?search=%20Web%20Development&price=price-free&instructional_level=beginner&ordering=price-low-to-high";
     axios
         .get(url, configUdemy)
         .then(({ data }) => {

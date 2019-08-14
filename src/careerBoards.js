@@ -4,51 +4,47 @@ import { Link } from "react-router-dom";
 
 export default function CareerBoards(props) {
     const [path, setPath] = useState();
-    console.log("path", path);
+    // console.log("path", path);
 
     function submit(e) {
         console.log("clicked the board");
-        console.log("e", e.target.textContent.toLowerCase());
-        setPath(e.target.textContent.toLowerCase());
-        if (path) {
-            props.history.push(`/career/${path}`);
-        }
+        // console.log("e", e.target.textContent.toLowerCase());
+        // setPath(e.target.textContent.toLowerCase());
+        // if (path) {
+        //     props.history.push(`/career/${path}`);
+        // }
     }
 
     return (
         <div className="boards-container">
             <Link to={"/career/code"} id="nav-link">
-                <div className="board" onClick={submit}>
-                    <p>Code</p>
+                <div className="board">
+                    <h3>Web Development</h3>
                 </div>
             </Link>
             <Link to={"/career/design"} id="nav-link">
-                <div className="board" onClick={submit}>
-                    <p>Design</p>
+                <div className="board">
+                    <h3>Web Design</h3>
                 </div>
             </Link>
-            <Link to={"/career/film"} id="nav-link">
-                <div className="board" onClick={submit}>
-                    <p>Film</p>
-                    <p>Some info about this profession</p>
+            <Link to={"/career/datascience"} id="nav-link">
+                <div className="board">
+                    <p>Data Science</p>
                 </div>
             </Link>
             <Link to={"/career/marketing"} id="nav-link">
-                <div className="board" onClick={submit}>
-                    <p>Marketing</p>
-                    <p>Some info about this profession</p>
+                <div className="board">
+                    <p>Digital Marketing</p>
                 </div>
             </Link>
-            <Link to={"/career/photography"} id="nav-link">
-                <div className="board" onClick={submit}>
-                    <p>Photography</p>
-                    <p>Some info about this profession</p>
+            <Link to={"/career/smm"} id="nav-link">
+                <div className="board">
+                    <p>Social Media Management</p>
                 </div>
             </Link>
-            <Link to={"/career/management"} id="nav-link">
-                <div className="board" onClick={submit}>
-                    <p>Management</p>
-                    <p>Some info about this profession</p>
+            <Link to={"/career/product"} id="nav-link">
+                <div className="board">
+                    <p>Product Management</p>
                 </div>
             </Link>
         </div>

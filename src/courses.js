@@ -5,33 +5,53 @@ import axios from "./axios";
 export default function Courses(props) {
     const [courses, setCourses] = useState();
     const favcourses = useSelector(state => state.favcourses);
-    console.log("props:", props.careerPath);
+    // console.log("favcourses:", favcourses);
 
-    useEffect(() => {
-        (async () => {
-            try {
-                const { data } = await axios.get("/courses", {
-                    careerPath: props.careerPath
-                });
-                console.log("data from API", data);
+    useEffect(
+        () => {
+            (async () => {
+                try {
+                    // console.log("props:", props.careerPath);
+                    const { data } = await axios.get(
+                        "/courses/" + props.careerPath
+                    );
+                    console.log("data from API", data);
+                    //
+                    // const arr = [];
 
-                // if (courses) {
-                //     const arr = data.forEach(i =>
-                //         favcourses.forEach(j => {
-                //             if (i.id != j.image_id) {
-                //                 arr.push(i);
-                //             }
-                //         })
-                //     );
-                //     console.log("new array", arr);
-                // }
+                    // data.forEach(i => {
+                    //     // console.log("data.id:", i.id);
+                    //     let finalarr = [];
+                    //     favcourses.forEach(j => {
+                    //         if (i.id != j.image_id) {
+                    //             finalarr.push(i);
+                    //         }
+                    //     });
+                    //
+                    //     console.log("final array: ", finalarr);
+                    // });
 
-                setCourses(data);
-            } catch (err) {
-                console.log("err in GET /courses", err);
-            }
-        })();
-    }, []);
+                    // if (i.id != j.image_id) {
+                    //     console.log("what we want to show: ", i);
+                    // }
+
+                    // favcourses.forEach(j => {
+                    //     if (i.id != j.image_id) {
+                    //         arr.push(i);
+                    //     }
+                    // })
+
+                    // console.log("favorite courses:", favcourses);
+                    // console.log("new array", arr);
+
+                    setCourses(data);
+                } catch (err) {
+                    console.log("err in GET /courses", err);
+                }
+            })();
+        },
+        [props.careerPath]
+    );
 
     async function submit(course) {
         try {
