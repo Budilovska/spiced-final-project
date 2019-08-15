@@ -47,7 +47,7 @@ export default class Offer extends React.Component {
                 {this.props.offer && !this.state.editing && (
                     <div>
                         <p className="offer-text">
-                            Your new offer is: {this.props.offer}
+                            {this.props.offer}
                         </p>
                         <button
                             className="offer-btn"
@@ -83,7 +83,7 @@ export default class Offer extends React.Component {
                             })
                         }
                     >
-                        Add your offer
+                        Add offer
                     </button>
                 )}
             </div>

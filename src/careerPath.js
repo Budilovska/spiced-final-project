@@ -74,17 +74,34 @@ export default function CareerPath(props) {
                     </div>
                 )}
 
-
+                {careerPath == "product" && (
+                    <div className="path-description">
+                    <h2 className="path-title">What is a product manager?</h2>
+                        <p className="path-p">
+                            Product managers are responsible for guiding the success of a product and leading the cross-functional team that is responsible for improving it. It is an important organizational role — especially in technology companies — that sets the strategy, roadmap, and feature definition for a product or product line. <br /> <br />Product managers provide the deep product expertise needed to lead the organization and make strategic product decisions. They often analyze market and competitive conditions, laying out a product vision that is differentiated and delivers unique value based on customer demands.
+                        </p>
+                        <div className="list">
+                            <p className="list-p"> &#10004; Product strategy</p>
+                            <p className="list-p"> &#10004; User experience testing</p>
+                            <p className="list-p"> &#10004; Task management</p>
+                            <p className="list-p"> &#10004; Google Docs</p>
+                            <p className="list-p"> &#10004; JIRA</p>
+                            <p className="list-p"> &#10004; Trello</p>
+                        </div>
+                    </div>
+                )}
 
             </div>
             <Courses careerPath={careerPath} />
+            <div className="tutors-container">
             <div>
-                <h2>Pick an offer from a mentor</h2>
+                <h2 className="path-title">Tutors</h2>
             </div>
             <div className="display-teachers">
                 {teacher &&
                     teacher.map(t => (
                         <div key={t.id} className="teachers-container">
+                        <div className="teacher-header">
                             <Link to={`/user/${t.teacher_id}`}>
                                 <img
                                     className="teacher-avatar"
@@ -92,17 +109,20 @@ export default function CareerPath(props) {
                                     alt={`${t.first} ${t.last}`}
                                 />
                             </Link>
-                            <p className="offer-text">
-                                {t.first} {t.last} offers {t.offer}
+                            </div>
+                            <p className="teacher-name">
+                                {t.first} {t.last}
                             </p>
+                            <p className="course-title">{t.offer}</p>
                             <Link
                                 className="link-to-chat"
                                 to={`/chat/${t.teacher_id}`}
                             >
-                                Chat with a teacher
+                                <img className="chat-icon" src="/speech-bubble.png" />
                             </Link>
                         </div>
                     ))}
+            </div>
             </div>
         </div>
     );

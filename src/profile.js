@@ -36,25 +36,23 @@ export default function Profile(props) {
                     </h2>
                     {props.bioeditor}
                     </div>
-
-                    <div className="profile-name-bio">
-
-
-                    </div>
                     <div>
                         <FavoriteCourses />
                     </div>
                 </div>
             ) : (
                 <div className="profile-container">
+                <div className="teach-prof">
                     <div className="profile-avatar">{props.avatar}</div>
-                    <div className="profile-name-bio">
+
                         <h2 className="profile-name">
                             {props.first} {props.last}
                         </h2>
                         {props.bioeditor}
                         {props.offer}
-                    </div>
+                        </div>
+
+
                     {checkbox && (
                         <TeacherInfo
                             id={props.id}

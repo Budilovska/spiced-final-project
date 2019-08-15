@@ -39,7 +39,9 @@ export function PrivateChat(props) {
 
     return (
         <div className="chat">
-        <h1 className="search-text">Private chat</h1>
+        <img className="blob7" src="/blob7.svg" />
+        <img className="blob6" src="/blob6.svg" />
+        <h1 className="chat-text">Messenger</h1>
             <div className="chat-container" ref={elemRef}>
                 {message &&
                     message.map(msg => (
