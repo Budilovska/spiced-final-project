@@ -1,44 +1,41 @@
 * {
-    background-color: white;
     box-sizing: border-box;
     margin: 0;
 
 }
 
-body {
+/* body {
     overflow: hidden;
-}
+} */
 
 .welcome {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100vh;
-    overflow-y: hidden;
+    overflow: hidden;
     justify-content: space-between;
-    /* align-content: center; */
-    /* background-color: #EB6FA0; */
+    position: fixed;
 }
 
 .myLogo {
-    height: 100px;
+    margin-top: 8px;
+    margin-left: 0.6rem;
     position: relative;
 }
 
 .myLogoImg {
-    height: 90px;
+    height: 80px;
 }
 
 .login-box {
-    /* display: flex;
-    flex-direction: row; */
     z-index: 7;
     background: transparent;
     position: absolute;
     right: 10px;
 }
 
-.young-pros {
+.young-pros1 {
     animation: moving 3s ease-in-out;
     font-size: 170px;
     color: black;
@@ -59,8 +56,28 @@ body {
     }
 }
 
-.young-pros-desc {
+.young-pros2 {
     animation: moving2 3s ease-in-out;
+    font-size: 170px;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    z-index: 3;
+    background: transparent;
+    margin-left: 3rem;
+}
+
+@keyframes moving2 {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+.young-pros-desc {
+    animation: moving3 3s ease-in-out;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 25px;
@@ -71,12 +88,12 @@ body {
     letter-spacing: 0.1em;
 }
 
-@keyframes moving2 {
+@keyframes moving3 {
     0% {
-        transform: translateX(100%);
+        transform: translateY(-1200%);
     }
     100% {
-        transform: translateX(0%);
+        transform: translateY(0%);
     }
 }
 
@@ -280,6 +297,44 @@ select {
     flex-direction: row;
 }
 
+.profile-container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    overflow: hidden;
+    justify-content: space-between;
+    }
+
+
+
+.bioeditor {
+    width: 450px;
+    height: 400px;
+    margin-left: 50px;
+    margin-top: 30px;
+}
+
+.bio-text {
+    font-family: 'Caveat', cursive;
+    font-size: 30px;
+    width: 300px;
+    height: 400px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 .wraps-all {
     height: 100vh;
     width: 100%;
@@ -344,15 +399,6 @@ header {
     border-radius: 50%;
 }
 
-#small-logo {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2.7rem;
-    float: left;
-    color: white;
-    background-color: inherit;
-    margin-left: 0.6rem;
-}
-
 #nav-link {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
@@ -361,6 +407,7 @@ header {
     text-decoration: none;
     position: relative;
     color: black;
+    letter-spacing: 0.1em;
 }
 
 
@@ -372,7 +419,7 @@ header {
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: white;
+  background-color: black;
   visibility: hidden;
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
@@ -399,21 +446,17 @@ header {
     object-fit: cover;
 }
 
-.profile-container {
-    display: flex;
-    flex-direction: row;
-    /* border-bottom: 1px solid pink; */
-}
-
 .profile-avatar {
     position: relative;
+    float: left;
 }
 
 .profile-avatar img {
-    width: 10rem;
-    height: 10rem;
+    width: 14rem;
+    height: 14rem;
     object-fit: cover;
-    margin: 2rem;
+    margin-left: 3.5rem;
+    margin-top: 5rem;
     border-radius: 50%;
 }
 
@@ -422,8 +465,8 @@ header {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300px;
     font-size: 40px;
-    margin-top: 1.6rem;
-    margin-left: 2rem;
+    margin-left: 3.5rem;
+    margin-top: 2rem;
 }
 
 .profile-name-bio {
@@ -444,33 +487,6 @@ textarea {
     font-size: 16px;
     margin-left: 2rem;
     margin-top: 2rem;
-}
-
-.friends-container {
-    display: flex;
-    flex-direction: column;
-    margin-top: 2rem;
-    margin-left: 2rem;
-}
-
-.friends-list {
-    display: grid;
-    grid-auto-rows: 2rem 20rem;
-    justify-content: start;
-    grid-column-gap: 2rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
-    width: 90%;
-    overflow-x: scroll;
-}
-
-.friend-text {
-    grid-row: 1/2;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
-    width: 11.5rem;
-    color: #e2b0dc;
-    border-bottom: 1px solid #e2b0dc;
 }
 
 .single-friend {
@@ -631,20 +647,7 @@ textarea {
 /* ------------------------------------------------ */
 /* Career boards */
 
-.boards-container {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
 
-.board {
-    width: 200px;
-    height: 250px;
-    border: 1px solid black;
-    cursor: pointer;
-    margin: 1.5rem;
-}
 
 .checkbox-container {
     display: flex;
@@ -677,12 +680,69 @@ textarea {
     font-size: 20px;
 }
 
+.careerpath-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-y: hidden;
+    position: relative;
+}
+
+.path-p {
+    width: 70%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    letter-spacing: 0.1em;
+    line-height: 1.5em;
+}
+
+.path-title {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 25px;
+    font-size: 45px;
+}
+
 .career-description {
     height: 20rem;
+    margin-top: 80px;
+    margin-left: 150px;
+    margin-bottom: 20rem;
+    width: 100%;
 }
 
 .path-description{
     width: 70%;
+    margin: 0;
+}
+
+.courses-main-container {
+    width: 90%;
+}
+
+.courses-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 50px;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    letter-spacing: 0.1em;
+    line-height: 1.5em;
+    width: 500px;
+    margin-top: 50px;
+}
+
+.list-p {
+    margin-left: 20px;
 }
 
 .pick-expertise{
@@ -704,35 +764,214 @@ textarea {
     opacity: 1;
 }
 
-.courses-container {
+.favcourses-container{
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    margin-top: 50px;
+}
+
+.favcourses {
     display: flex;
     flex-direction: row;
-    width: 70rem;
-    overflow: scroll;
+    flex-wrap: wrap;
+    width: 580px;
+    height: 580px;
+    margin-right: 10px;
+}
+
+.favcourses-title {
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: black;
+    width: 200px;
+    margin-top: 40px;
+    margin-left: 350px;
+    margin-bottom: 40px;
+    letter-spacing: 0.1em;
+}
+
+.description {
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
 }
 
 .course-img {
-    width: 7rem;
-    height: 7rem;
+    width: 200px;
+    height: 150px;
     object-fit: cover;
+    margin-left: 20px;
+    -webkit-filter: grayscale(95%);
+}
+
+.course-img:hover {
+  -webkit-filter: grayscale(0%);
 }
 
 .course-title {
-    font-size: 16px;
+    font-size: 15px;
     font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    width: 175px;
+    margin-top: 10px;
+    margin-left: 20px;
+    line-height: 1.5em
 }
 
 .course-item {
-    margin: 1rem;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    background-color: white;
+    height: 250px;
+    width: 240px;
+    margin-left: 40px;
+    margin-top: 40px;
+    border: solid 1px #E5E5E5;
+    box-shadow: 3px 3px 3px #e5e5e5;
+
+}
+
+.course-header {
+    height: 100px;
 }
 
 .add-to-fav-icon {
     width: 2rem;
     height: 2rem;
     position: absolute;
-    top: -15px;
-    left: -15px;
+    top: -29px;
+    left: -29px;
     background: transparent;
     cursor: pointer;
+}
+
+.remove-from-fav-icon {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: -29px;
+    left: -29px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.remove-from-fav-icon {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: -29px;
+    left: -29px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.remove-from-fav-icon:hover {
+    background: url("boring.png");
+}
+
+.boring-icon {
+    width: 150px;
+    position: absolute;
+    shadow: 3px 3px 3px gray;
+}
+
+.no-courses-link {
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: black;
+    width: 300px;
+    margin-top: 40px;
+    /* margin-left: 350px;
+    margin-bottom: 40px; */
+    letter-spacing: 0.1em;
+}
+
+.no-courses-link:visited {
+  text-decoration: none;
+}
+
+.career-board {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    margin: 0 15px;
+    text-decoration: none;
+    position: relative;
+    color: black;
+    letter-spacing: 0.1em;
+}
+
+.boards-container {
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-content: center;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.boards-inner-container {
+    width: 90%;
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 60px;
+}
+
+.board {
+    width: 530px;
+    height: 150px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 1.5rem;
+    border: solid 1px #efefef;
+    box-shadow: 2px 3px 2px #bcbaba;
+    overflow: hidden;
+    background: white;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.board:hover {
+        box-shadow: 4px 4px 2px #bcbaba;
+}
+
+.board-p {
+    letter-spacing: 0.1em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+}
+
+.blob1 {
+    position: absolute;
+    width: 1200px;
+    left: -600px;
+    bottom: -250px;
+}
+
+.blob2 {
+    position: absolute;
+    width: 800px;
+    right: -250px;
+    top: -300px;
+}
+
+.blob3 {
+    position: absolute;
+    width: 1000px;
+    left: -500px;
+    top: 450px;
+    z-index: -1;
 }

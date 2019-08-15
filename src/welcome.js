@@ -22,8 +22,9 @@ export default class Welcome extends React.Component {
                         </div>
             </div>
                 <div className="welcome">
-                <h1 className="young-pros">Young <br /> Pros</h1>
-                <h2 className="young-pros-desc">Tech career explorer <br />for high school students</h2>
+                <h1 className="young-pros1">Young</h1>
+                <h1 className="young-pros2">Pros</h1>
+                <h2 className="young-pros-desc">Tech career explorer for <br />high school students</h2>
 
                     <div className="bubbles-container">
                     <div className="intro_layers" />

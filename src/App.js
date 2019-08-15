@@ -39,15 +39,13 @@ export default class App extends React.Component {
                 <BrowserRouter>
                     <header>
                     <div className="myLogo">
-                    <img className="myLogoImg" src="blob-shape (2).svg" />
-                    <img className="myLogoImg" src="blob-shape (3).svg" />
-                    <img className="myLogoImg" src="blob-shape (4).svg" />
+                    <img className="myLogoImg" src="/mylogo.png" />
                     </div>
-                        <h1 id="small-logo">Logo</h1>
                         <div className="nav-container">
-                            <Link to={"/users"} id="nav-link">
-                                Search
-                            </Link>
+                        {this.state.role == "student" && <Link to={"/careers"} id="nav-link">
+                            Careers
+                        </Link>}
+
                             <Link to={"/"} id="nav-link">
                                 My profile
                             </Link>

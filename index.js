@@ -247,26 +247,14 @@ app.get("/search/:val.json", async (req, res) => {
     }
 });
 
-app.post(`/favorites/:teacherId`, async (req, res) => {
-    try {
-        let result = await db.addFavoriteTeacher(
-            req.session.userId,
-            req.params.teacherId
-        );
-        res.json({ button: "Remove from favorites" });
-    } catch (err) {
-        console.log("err in POST /favorites", err);
-    }
-});
-
 //------------------------------- UDEMY API --------------------------
 
 app.get("/courses/:course", function(req, res) {
     console.log("BODY", req.params.course);
     var url;
     if (req.params.course == "code") {
-        url = `https://www.udemy.com/api-2.0/courses/?search=web%20development&price=price-free&instructional_level=beginner&ordering=highest-rated
-    `;
+        url = `https://www.udemy.com/api-2.0/courses/?search=web%20development&price=price-free&instructional_level=beginner&ordering=highest-rated`
+        ;
     } else if (req.params.course == "design") {
         url = `https://www.udemy.com/api-2.0/courses/?search=web%20design&price=price-free&instructional_level=beginner&ordering=highest-rated
     `;
@@ -282,7 +270,7 @@ app.get("/courses/:course", function(req, res) {
     } else if (req.params.course == "product") {
         url = `https://www.udemy.com/api-2.0/courses/?search=product%20management&price=price-free&instructional_level=beginner&ordering=highest-rated
 `;
-    }
+    } 
 
     axios
         .get(url, configUdemy)
@@ -291,7 +279,7 @@ app.get("/courses/:course", function(req, res) {
             res.json(data.results);
         })
         .catch(err => {
-            console.log("err in POST /favorites", err);
+            console.log("err in courses /API", err);
         });
 });
 

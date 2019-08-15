@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setFavoriteCourses } from "./actions";
 import axios from "./axios";
+import { Link } from "react-router-dom";
 
 export default function FavoriteCourses() {
     const [favCourses, setFavCourses] = useState();
@@ -35,31 +36,45 @@ export default function FavoriteCourses() {
     }
 
     return (
-        <div>
+        <div className="favcourses-container">
             {favCourses && favCourses.length == 0 ? (
-                <div>
-                    <h2>You don't have favorite courses yet</h2>
+                <div className="favcourses-title">
+
+                <Link to={"/careers"} className="no-courses-link">
+                    Discover careers
+                </Link>
+
                 </div>
             ) : (
                 <div>
-                    <h2>My favorite courses</h2>
+                <div>
+                <h2 className="favcourses-title">My favorite courses</h2>
+                </div>
+                <div className="favcourses">
+
+
                     {favCourses &&
                         favCourses.map(course => (
                             <div key={course.image_id} className="course-item">
+                            <div>
                                 <a id="course-link" href={course.url}>
                                     <img
                                         className="course-img"
                                         src={course.image}
                                     />
                                 </a>
-                                <h2 className="course-title">{course.title}</h2>
-                                <img
-                                    className="add-to-fav-icon"
-                                    src="/remove-from-fav.png"
-                                    onClick={() => submit(course)}
-                                />
+                                </div>
+                            <div className="course-header">
+                            <img
+                                className="remove-from-fav-icon"
+                                src="/remove-from-fav.png"
+                                onClick={() => submit(course)}
+                            />
+                            <h2 className="course-title">{course.title}</h2>
+                            </div>
                             </div>
                         ))}
+                </div>
                 </div>
             )}
         </div>

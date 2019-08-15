@@ -43,7 +43,7 @@ export default class Bioeditor extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="bioeditor">
                 {this.props.bio && !this.state.editing && (
                     <div>
                         <p className="bio-text">{this.props.bio}</p>

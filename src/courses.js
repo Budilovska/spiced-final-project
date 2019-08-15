@@ -51,8 +51,8 @@ export default function Courses(props) {
     }
 
     return (
-        <div>
-            <h2>Courses</h2>
+        <div className="courses-main-container">
+            <h2 className="path-title">Courses</h2>
             <div className="courses-container">
                 {courses &&
                     courses.map(course => (

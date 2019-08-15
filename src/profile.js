@@ -30,18 +30,20 @@ export default function Profile(props) {
         <div>
             {role == "student" ? (
                 <div className="profile-container">
-                    <div className="profile-avatar">{props.avatar}</div>
+                    <div className="profile-avatar">{props.avatar}
+                    <h2 className="profile-name">
+                        {props.first} <br />{props.last}
+                    </h2>
+                    {props.bioeditor}
+                    </div>
 
                     <div className="profile-name-bio">
-                        <h2 className="profile-name">
-                            {props.first} {props.last}
-                        </h2>
-                        {props.bioeditor}
+
+
                     </div>
-                    <Link to={"/careers"} id="nav-link">
-                        Pick your career path
-                    </Link>
-                    <FavoriteCourses />
+                    <div>
+                        <FavoriteCourses />
+                    </div>
                 </div>
             ) : (
                 <div className="profile-container">
