@@ -79,7 +79,7 @@ export default class Bioeditor extends React.Component {
                             })
                         }
                     >
-                        Tell us about yourself
+                        Add Bio
                     </button>
                 )}
             </div>

@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "./axios";
-import FriendButton from "./friendButton";
 import { PrivateChat } from "./privateChat";
 import { Link } from "react-router-dom";
 
@@ -47,16 +46,17 @@ export default class OtherProfile extends React.Component {
                             <h2 className="profile-name">
                                 {this.state.first} {this.state.last}
                             </h2>
+                            <p className="other-bio-text">{this.state.bio}</p>
 
+                            <Link className="chat-btn" to={`/chat/${this.props.match.params.id}`}
+                            >
+                                Message
+                            </Link>
                         </div>
+
+
                         <div>
 
-                            <p className="bio-text">{this.state.bio}</p>
-                            <Link to={`/chat/${this.props.match.params.id}`}
-                            >
-                                Chat with me
-                            </Link>
-                        
                         </div>
                     </div>
                 ) : (

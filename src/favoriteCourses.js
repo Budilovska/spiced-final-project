@@ -48,7 +48,7 @@ export default function FavoriteCourses() {
             ) : (
                 <div>
                 <div>
-                <h2 className="favcourses-title">My favorite courses</h2>
+                <h2 className="favcourses-title">Discover courses</h2>
                 </div>
                 <div className="favcourses">
 

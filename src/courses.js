@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "./axios";
+import ScrollableAnchor from 'react-scrollable-anchor';
+import { configureAnchors } from 'react-scrollable-anchor'
+
+configureAnchors({offset: -200, scrollDuration: 400});
 
 export default function Courses(props) {
     const [courses, setCourses] = useState();
     const [sortedCourses, setsortedCourses] = useState(false);
     const favcourses = useSelector(state => state.favcourses);
-    console.log("favcourses:", favcourses);
+    // console.log("favcourses:", favcourses);
     if (favcourses && courses && !sortedCourses) {
         const favId = favcourses.map(course => Number(course.image_id));
-        console.log("favId", favId);
+        // console.log("favId", favId);
         const sorted = courses.filter(course => !favId.includes(course.id));
-        console.log("sorted", sorted);
+        // console.log("sorted", sorted);
         setCourses(sorted);
         setsortedCourses(true);
     }
@@ -26,8 +30,6 @@ export default function Courses(props) {
                     const { data } = await axios.get(
                         "/courses/" + props.careerPath
                     );
-                    console.log("data from API", data);
-
                     setCourses(data);
                 } catch (err) {
                     console.log("err in GET /courses", err);
@@ -51,8 +53,10 @@ export default function Courses(props) {
     }
 
     return (
-        <div className="courses-main-container">
-            <h2 className="path-title">Courses</h2>
+       <div className="courses-main-container">
+        <div>
+        <h2 className="path-title">Courses</h2>
+
             <div className="courses-container">
                 {courses &&
                     courses.map(course => (
@@ -74,6 +78,7 @@ export default function Courses(props) {
                             />
                         </div>
                     ))}
+            </div>
             </div>
         </div>
     );

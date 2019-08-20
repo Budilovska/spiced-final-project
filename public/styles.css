@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
-
+    outline: 0;
 }
 
 /* body {
@@ -102,8 +102,6 @@
     height: 100vh;
     overflow-y: hidden;
 }
-
-
 
 .intro_layers {
     animation: bubble 5s linear infinite;
@@ -269,7 +267,7 @@
 }
 
 input {
-    -webkit-appearance: none;
+    /* -webkit-appearance: none; */
    outline: none;
    outline-width: 0;
    background: transparent;
@@ -287,6 +285,19 @@ input::placeholder {
     font-weight: 400;
     font-size: 16px;
     color: black;
+}
+
+#other-input {
+    appearance: checkbox;
+    outline: none;
+    outline-width: 0;
+    background: transparent;
+    border: none;
+     color: black;
+     width: 120px;
+     margin-right: 5px;
+     letter-spacing: 0.1em;
+     font-weight: 400;
 }
 
 select {
@@ -327,7 +338,7 @@ select {
 
 .bioeditor {
     width: 500px;
-    height: 300px;
+    height: 200px;
     margin-left: 50px;
     margin-top: 30px;
 }
@@ -336,20 +347,37 @@ select {
     font-family: 'Caveat', cursive;
     font-size: 30px;
     width: 350px;
-    margin-bottom: 20px;
+
 }
 
 
+.other-bio-text {
+    font-family: 'Caveat', cursive;
+    font-size: 30px;
+    width: 350px;
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-bottom: 30px;
+}
 
 
-
-
-
-
-
-
-
-
+.chat-btn {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    width: 7rem;
+    height: 2.3rem;
+    letter-spacing: 0.1em;
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 30px;
+    margin-top: 30px;
+    margin-left: 50px;
+    text-decoration: none;
+}
 
 .wraps-all {
     height: 100vh;
@@ -472,7 +500,7 @@ header {
     height: 14rem;
     object-fit: cover;
     margin-left: 3.5rem;
-    margin-top: 5rem;
+    margin-top: 3rem;
     border-radius: 50%;
 }
 
@@ -496,7 +524,7 @@ header {
 }
 
 textarea {
-    height: 10rem;
+    height: 8rem;
     width: 11rem;
     font-family: 'Caveat', cursive;
     font-size: 30px;
@@ -719,8 +747,9 @@ textarea {
 }
 
 .offer-text {
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
+    font-family: 'Caveat', cursive;
+    font-size: 30px;
+    margin-left: 50px;
 }
 
 .careerpath-container {
@@ -795,8 +824,7 @@ textarea {
 .pick-expertise{
     width: 100%;
     height: 100vh;
-    background-color: black;
-    opacity: 0.7;
+    background-color: rgba(1, 0, 0, 0.8);
     position: fixed;
     top: 0;
     display: flex;
@@ -805,10 +833,14 @@ textarea {
 }
 
 .expertise-container {
-    width: 30rem;
-    height: 20rem;
+    width: 40rem;
+    height: 30rem;
     background: white;
     opacity: 1;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .favcourses-container{
@@ -1104,4 +1136,41 @@ letter-spacing: 0.1;
     border-radius: 30px;
     margin-top: 10px;
     margin-left: 50px;
+}
+
+.checkbox-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    width: 500px;
+    margin-top: 100px;
+    letter-spacing: 0.1em;
+    margin-left: 60px;
+}
+
+.checkbox-title2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    width: 500px;
+    letter-spacing: 0.1em;
+        margin-left: 60px;
+        margin-top: 20px;
+}
+
+.checkbox-label {
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.1em;
+}
+
+.check {
+    width: 240px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 30px;
+}
+
+.addoffer-text {
+    margin-left: 50px;
+    height: 50px;
 }

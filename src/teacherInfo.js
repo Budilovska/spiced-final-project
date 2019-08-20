@@ -42,7 +42,7 @@ export default function TeacherInfo(props) {
         {
             name: "design",
             key: "box2",
-            label: "design"
+            label: "web design"
         },
         {
             name: "film",
@@ -69,14 +69,15 @@ export default function TeacherInfo(props) {
     return (
         <div className="pick-expertise">
             <div className="expertise-container">
-                <h2>Thank you for joining us as a mentor, {props.first}!</h2>
+                <h2 className="checkbox-title">Thank you for joining us as a tutor, {props.first}!</h2>
+                <p className="checkbox-title2">Pick your area of expertise</p>
                 <label>
-                    Pick your area of expertise {checkedItems["check-box-1"]}{" "}
+                    {checkedItems["check-box-1"]}{" "}
                 </label>
                 <br />
-
+                <div className="check">
                 {checkboxes.map(item => (
-                    <label key={item.key}>
+                    <label key={item.key} className="checkbox-label">
                         {item.name}
                         <Checkbox
                             name={item.name}
@@ -85,6 +86,7 @@ export default function TeacherInfo(props) {
                         />
                     </label>
                 ))}
+                </div>
             </div>
         </div>
     );

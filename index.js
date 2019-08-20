@@ -232,21 +232,6 @@ app.get("/users.json", async (req, res) => {
     }
 });
 
-//------------------searching users --------------------
-
-app.get("/search/:val.json", async (req, res) => {
-    try {
-        const result = await db.searchUser(req.params.val);
-        // console.log(result.rows);
-        res.json(result.rows);
-    } catch (err) {
-        console.log("err in GET /users", err);
-        res.json({
-            noResults: true
-        });
-    }
-});
-
 //------------------------------- UDEMY API --------------------------
 
 app.get("/courses/:course", function(req, res) {
@@ -270,7 +255,7 @@ app.get("/courses/:course", function(req, res) {
     } else if (req.params.course == "product") {
         url = `https://www.udemy.com/api-2.0/courses/?search=product%20management&price=price-free&instructional_level=beginner&ordering=highest-rated
 `;
-    } 
+    }
 
     axios
         .get(url, configUdemy)
@@ -324,49 +309,7 @@ app.post("/delete-course", async (req, res) => {
     }
 });
 
-app.post("/friendship/:othProfId", async (req, res) => {
-    try {
-        if (req.body.button == "Add friend") {
-            const result = await db.sendFriendRequest(
-                req.session.userId,
-                req.params.othProfId
-            );
-            // console.log("accepted", result.rows);
-            res.json({ buttonText: "Cancel friend request" });
-        } else if (req.body.button == "Accept friend request") {
-            const results = await db.acceptFriendRequest(
-                req.params.othProfId,
-                req.session.userId
-            );
-            res.json({ buttonText: "Unfriend" });
-        } else if (
-            req.body.button == "Unfriend" ||
-            req.body.button == "Cancel friend request"
-        ) {
-            const results = await db.deleteFriend(
-                req.params.othProfId,
-                req.session.userId
-            );
-            res.json({ buttonText: "Add friend" });
-        }
-    } catch (err) {
-        console.log("err in GET /frienship", err);
-    }
-});
-
-//---------------- Getting all friends------------------------
-app.get("/friends.json", async (req, res) => {
-    try {
-        const friends = await db.getFriendsList(req.session.userId);
-        // console.log("friends", friends);
-        res.json(friends.rows);
-    } catch (err) {
-        console.log("err in GET /friends", err);
-    }
-});
-
 ///-------------- Do not delete this!!! ---------------------
-//this route has to be after all get routes.
 app.get("*", function(req, res) {
     if (!req.session.userId && req.url != "/welcome") {
         res.redirect("/welcome");
@@ -383,9 +326,8 @@ server.listen(8080, function() {
 
 //----------------- socket.io / chat --------------------------------
 let usersConnectedNow = [];
-//we pass to this function an object represents a connection between me and client
 io.on("connection", async socket => {
-    console.log(`A socket with the id ${socket.id} just connected.`);
+    // console.log(`A socket with the id ${socket.id} just connected.`);
 
     if (!socket.request.session.userId) {
         return socket.disconnect(true);
@@ -401,7 +343,7 @@ io.on("connection", async socket => {
 
     usersConnectedNow.push(newUserConnected);
 
-    console.log("connected users:", usersConnectedNow);
+    // console.log("connected users:", usersConnectedNow);
 
     //--------------------- last private messages -------------------------
     //
@@ -415,9 +357,9 @@ io.on("connection", async socket => {
     //--------------------- private messages -------------------------
 
     socket.on("private message", async (msg, id) => {
-        console.log(
-            `private message to ${id.receiver_id} from ${userId} is: ${msg}`
-        );
+        // console.log(
+        //     `private message to ${id.receiver_id} from ${userId} is: ${msg}`
+        // );
 
         const privateMessage = await db.addPrivateMessage(
             msg,
@@ -451,13 +393,13 @@ io.on("connection", async socket => {
     });
 
     socket.on("disconnect", () => {
-        console.log(`A socket with the id ${socket.id} just disconnected.`);
+        // console.log(`A socket with the id ${socket.id} just disconnected.`);
         const socketDisconnected = socket.id;
         // console.log("socketToRemove:", socketDisconnected);
         usersConnectedNow = usersConnectedNow.filter(
             i => i[userId] !== socketDisconnected
         );
 
-        console.log("new users that are connected", usersConnectedNow);
+        // console.log("new users that are connected", usersConnectedNow);
     });
 });

@@ -4,26 +4,26 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToFavorites } from "./actions";
 import Courses from "./courses";
+import ScrollableAnchor from 'react-scrollable-anchor';
+import { configureAnchors } from 'react-scrollable-anchor'
+
+configureAnchors({offset: -60, scrollDuration: 200});
 
 export default function CareerPath(props) {
     const dispatch = useDispatch();
     const [teacher, setTeacher] = useState();
     const [careerPath, setPath] = useState();
-
-    console.log("path", careerPath);
+    // console.log("path", careerPath);
 
     const button = useSelector(state => state.button);
     const favorites = useSelector(state => state.favorites);
-
-    console.log("button", button);
+    // console.log("button", button);
 
     useEffect(() => {
         (async () => {
             try {
                 const path = props.match.params.path;
                 const { data } = await axios.get(`/career/${path}.json`);
-                console.log("data", data);
-                console.log("teachers data", data);
                 setTeacher(data);
                 setPath(data[0].careerpath);
             } catch (err) {

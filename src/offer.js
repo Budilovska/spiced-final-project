@@ -21,8 +21,6 @@ export default class Offer extends React.Component {
             const { data } = await axios.post("/offer", {
                 draftOffer: this.offer
             });
-            console.log("data", data);
-
             this.props.setOffer(data);
             this.setState({
                 editing: false
@@ -60,7 +58,7 @@ export default class Offer extends React.Component {
 
                 {this.state.editing && (
                     <div className="text-area">
-                        <textarea
+                        <textarea className="addoffer-text"
                             name="draftOffer"
                             onChange={e => this.handleChange(e)}
                         />

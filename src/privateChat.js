@@ -5,18 +5,12 @@ import { Link } from "react-router-dom";
 
 export function PrivateChat(props) {
     const message = useSelector(state => state && state.pm);
-    // const lastPM = useSelector(state => state && state.pm);
     const id = props.match.params.id;
-    // console.log("receiver_id is:", id);
-    console.log("message", message);
 
     const elemRef = useRef();
 
     useEffect(
         () => {
-            // const id = props.match.params.id;
-            // console.log("receiver_id is:", id);
-
             elemRef.current.scrollTop =
                 elemRef.current.scrollHeight - elemRef.current.clientHeight;
         },
@@ -28,7 +22,6 @@ export function PrivateChat(props) {
     }, []);
 
     const keyCheck = e => {
-        // console.log("e.target.value", e.target.value);
         if (e.key == "Enter" && e.target.value !== "") {
             e.preventDefault();
 

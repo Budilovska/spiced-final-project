@@ -5,8 +5,6 @@ import axios from "./axios";
 import Profile from "./profile";
 import Bioeditor from "./bioeditor";
 import OtherProfile from "./otherProfile";
-import FindPeople from "./findPeople";
-import Friends from "./friends";
 import CareerBoards from "./careerBoards";
 import CareerPath from "./careerPath";
 import Offer from "./offer";
@@ -20,12 +18,10 @@ export default class App extends React.Component {
             uploaderIsVisible: false
         };
     }
-    //componentDidMount will pass info to Avatar component
+
     async componentDidMount() {
-        // console.log("mounted");
         try {
             const { data } = await axios.get("/user");
-            // console.log("data", data);
             this.setState(data);
         } catch (err) {
             console.log("err in GET /user", err);
