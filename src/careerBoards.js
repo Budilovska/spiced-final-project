@@ -21,32 +21,33 @@ export default function CareerBoards(props) {
         <img className="blob2" src="blob2.svg" />
         <div className="boards-inner-container">
             <Link to={"/career/code"} className="career-board">
-                <div className="board">
+                <div id="dev-board" className="board">
                     <p className="board-p">Web Development</p>
+
                 </div>
             </Link>
             <Link to={"/career/design"} className="career-board">
-                <div className="board">
+                <div id="design-board" className="board">
                     <p className="board-p">Web Design</p>
                 </div>
             </Link>
             <Link to={"/career/datascience"} className="career-board">
-                <div className="board">
+                <div id="data-board" className="board">
                     <p className="board-p">Data Science</p>
                 </div>
             </Link>
             <Link to={"/career/marketing"} className="career-board">
-                <div className="board">
+                <div id="marketing-board" className="board">
                     <p className="board-p">Digital Marketing</p>
                 </div>
             </Link>
             <Link to={"/career/smm"} className="career-board">
-                <div className="board">
+                <div id="smm-board" className="board">
                     <p className="board-p">Social Media Management</p>
                 </div>
             </Link>
             <Link to={"/career/product"} className="career-board">
-                <div className="board">
+                <div id="product-board" className="board">
                     <p className="board-p">Product Management</p>
                 </div>
             </Link>

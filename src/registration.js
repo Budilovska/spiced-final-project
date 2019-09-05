@@ -13,11 +13,15 @@ export default class Registration extends React.Component {
         this.setState({
             [e.target.name]: e.target.value
         });
-        // console.log("this.state", this.state);
     }
     //------------------ handling submit registration ------------
 
     submit(e) {
+        if (!this.state.role) {
+            this.setState({
+                error: true
+            });
+        }
         axios
             .post("/welcome/", {
                 first: this.state.first,
@@ -27,6 +31,7 @@ export default class Registration extends React.Component {
                 role: this.state.role
             })
             .then(({ data }) => {
+                console.log("data.success", data);
                 if (data.success) {
                     location.replace("/");
                     //user is now logged in, added cookie with userId
@@ -45,7 +50,6 @@ export default class Registration extends React.Component {
     render() {
         return (
             <div className="welcome-fields">
-                {this.state.error && <div className="error">Something went wrong</div>}
                 <input
                     name="first"
                     placeholder="first"
@@ -72,8 +76,9 @@ export default class Registration extends React.Component {
                     type="role"
                     onChange={e => this.handleChange(e)}
                 >
+                    <option value="null">who are you?</option>
                     <option value="student">student</option>
-                    <option value="teacher">teacher</option>
+                    <option value="teacher">mentor</option>
                 </select>
                 <Link className="login-link" to="/login">
                     Log in?
@@ -81,6 +86,11 @@ export default class Registration extends React.Component {
                 <button className="login-btn" onClick={e => this.submit()}>
                     Register
                 </button>
+                {this.state.error && (
+                    <div className="error">
+                        Please let us know if you're a student or a mentor
+                    </div>
+                )}
             </div>
         );
     }

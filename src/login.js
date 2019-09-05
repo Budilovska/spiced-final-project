@@ -40,12 +40,6 @@ export default class Login extends React.Component {
     render() {
         return (
             <div className="welcome-fields">
-
-                {this.state.error && (
-                    <div className="error">
-                        Something went wrong! Try again or register.
-                    </div>
-                )}
                 <input
                     name="email"
                     placeholder="email"
@@ -59,6 +53,11 @@ export default class Login extends React.Component {
                 />
                 <Link className="login-link" to="/">Register?</Link>
                 <button className="login-btn" onClick={e => this.login()}>Login</button>
+                {this.state.error && (
+                    <div className="error">
+                        Something went wrong! Try again or register.
+                    </div>
+                )}
             </div>
         );
     }

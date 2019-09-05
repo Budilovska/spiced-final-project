@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToFavorites } from "./actions";
 import Courses from "./courses";
+import AboutCareer from "./aboutCareer";
 import ScrollableAnchor from 'react-scrollable-anchor';
-import { configureAnchors } from 'react-scrollable-anchor'
+import { configureAnchors } from 'react-scrollable-anchor';
+
 
 configureAnchors({offset: -60, scrollDuration: 200});
 
@@ -38,59 +40,25 @@ export default function CareerPath(props) {
             <div className="career-description">
 
                 {careerPath == "code" && (
-                    <div className="path-description">
-                    <h2 className="path-title">What is a web developer?</h2>
-                        <p className="path-p">
-                            There are more than 1.25 billion websites online with thousands more added each day. Web developers are the individuals responsible for making that happen. They take a static visual design and turn it into a working, online website which people can visit and interact with. <br /> <br />This path begins with the basics of HTML but progresses quickly through CSS, JavaScript, and React so that you can go from no-code to full-stack at your own pace.
-                        </p>
-                        <div className="list">
-                            <p className="list-p"> &#10004; HTML & CSS</p>
-                            <p className="list-p"> &#10004; Javascript</p>
-                            <p className="list-p"> &#10004; Git</p>
-                            <p className="list-p"> &#10004; Command Line</p>
-                            <p className="list-p"> &#10004; SQL and Databases</p>
-                            <p className="list-p"> &#10004; API</p>
-                        </div>
-                    </div>
+                    <AboutCareer careerPath={careerPath} />
                 )}
 
                 {careerPath == "design" && (
-                    <div className="path-description">
-                    <h2 className="path-title">What is a web designer?</h2>
-                        <p className="path-p">
-                        A web designer's main job is to design web pages. There is a lot to consider in the design of websites which may not be immediately apparent when looking at a webpage for the first time. <br /> <br />
-
-                        The aesthetic aspect is an important one and selecting the appropriate colors, font, layout and images creates the whole personality of the website. In addition to considering aesthetic aspects, the usability of the website has to be a priority. It is important to create a page that the target market can relate to.
-
-                        </p>
-                        <div className="list">
-                            <p className="list-p"> &#10004; Visual Design</p>
-                            <p className="list-p"> &#10004; UX</p>
-                            <p className="list-p"> &#10004; Design Software</p>
-                            <p className="list-p"> &#10004; HTML & CSS</p>
-                            <p className="list-p"> &#10004; Communication</p>
-                            <p className="list-p"> &#10004; User Psychology</p>
-                        </div>
-                    </div>
+                    <AboutCareer careerPath={careerPath} />
                 )}
 
                 {careerPath == "product" && (
-                    <div className="path-description">
-                    <h2 className="path-title">What is a product manager?</h2>
-                        <p className="path-p">
-                            Product managers are responsible for guiding the success of a product and leading the cross-functional team that is responsible for improving it. It is an important organizational role — especially in technology companies — that sets the strategy, roadmap, and feature definition for a product or product line. <br /> <br />Product managers provide the deep product expertise needed to lead the organization and make strategic product decisions. They often analyze market and competitive conditions, laying out a product vision that is differentiated and delivers unique value based on customer demands.
-                        </p>
-                        <div className="list">
-                            <p className="list-p"> &#10004; Product strategy</p>
-                            <p className="list-p"> &#10004; User experience testing</p>
-                            <p className="list-p"> &#10004; Task management</p>
-                            <p className="list-p"> &#10004; Google Docs</p>
-                            <p className="list-p"> &#10004; JIRA</p>
-                            <p className="list-p"> &#10004; Trello</p>
-                        </div>
-                    </div>
+                    <AboutCareer careerPath={careerPath} />
                 )}
-
+                {careerPath == "datascience" && (
+                    <AboutCareer careerPath={careerPath} />
+                )}
+                {careerPath == "smm" && (
+                    <AboutCareer careerPath={careerPath} />
+                )}
+                {careerPath == "marketing" && (
+                    <AboutCareer careerPath={careerPath} />
+                )}
             </div>
             <Courses careerPath={careerPath} />
             <div className="tutors-container">

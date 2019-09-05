@@ -306,7 +306,7 @@ select {
    border: none;
    background-color: transparent;
    color: black;
-   width: 100px;
+   width: 150px;
    height: 50px;
    font-size: 16px;
    letter-spacing: 0.1em;
@@ -1005,6 +1005,7 @@ textarea {
     flex-direction: row;
     flex-wrap: wrap;
     margin-top: 60px;
+    justify-content: center;
 }
 
 .board {
@@ -1014,7 +1015,7 @@ textarea {
     cursor: pointer;
     margin: 1.5rem;
     border: solid 1px #efefef;
-    box-shadow: 2px 3px 2px #bcbaba;
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.1), 0 4px 7px rgba(0, 0, 0, 0.16);
     overflow: hidden;
     background: white;
     justify-content: center;
@@ -1023,7 +1024,48 @@ textarea {
 }
 
 .board:hover {
-        box-shadow: 4px 4px 2px #bcbaba;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.09), 0 6px 12px rgba(0, 0, 0, 0.09);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        animation: grow 1s linear;
+        animation-fill-mode: forwards;
+        color: rgba(0, 0, 0, 0)
+}
+
+@keyframes grow {
+    0% {
+        width: 530px;
+        height: 150px;
+    }
+    100% {
+        width: 560px;
+        height: 220px;
+    }
+}
+
+#dev-board:hover {
+    background-image: url("developer.svg");
+}
+
+#smm-board:hover {
+    background-image: url("smm.svg");
+}
+
+#design-board:hover {
+    background-image: url("design.svg");
+}
+
+#data-board:hover {
+    background-image: url("data.svg");
+}
+
+#product-board:hover {
+    background-image: url("product.svg");
+}
+
+#marketing-board:hover {
+    background-image: url("marketing.svg");
 }
 
 .board-p {
@@ -1173,4 +1215,14 @@ letter-spacing: 0.1;
 .addoffer-text {
     margin-left: 50px;
     height: 50px;
+}
+
+.error {
+    font-size: 24px;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+}
+
+.developer-img {
+    width: 200px;
 }
