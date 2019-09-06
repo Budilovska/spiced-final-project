@@ -37,32 +37,38 @@ export default function TeacherInfo(props) {
         {
             name: "code",
             key: "box1",
-            label: "code"
+            label: "code",
+            title: "web development"
         },
         {
             name: "design",
             key: "box2",
-            label: "web design"
+            label: "web design",
+            title: "web design"
         },
         {
-            name: "film",
+            name: "smm",
             key: "box3",
-            label: "film"
+            label: "smm",
+            title: "social media management"
         },
         {
             name: "marketing",
             key: "box4",
-            label: "marketing"
+            label: "marketing",
+            title: "digital marketing"
         },
         {
-            name: "photography",
+            name: "datascience",
             key: "box5",
-            label: "photography"
+            label: "datascience",
+            title: "data science"
         },
         {
-            name: "management",
+            name: "product",
             key: "box6",
-            label: "management"
+            label: "product",
+            title: "product management"
         }
     ];
 
@@ -78,12 +84,11 @@ export default function TeacherInfo(props) {
                 <div className="check">
                 {checkboxes.map(item => (
                     <label key={item.key} className="checkbox-label">
-                        {item.name}
                         <Checkbox
                             name={item.name}
                             checked={checkedItems[item.name]}
                             onChange={handleChange}
-                        />
+                        /> {item.title}
                     </label>
                 ))}
                 </div>

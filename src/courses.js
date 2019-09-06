@@ -56,7 +56,7 @@ export default function Courses(props) {
        <div className="courses-main-container">
         <div>
         <h2 className="path-title">Courses</h2>
-
+<div className="centers-courses">
             <div className="courses-container">
                 {courses &&
                     courses.map(course => (
@@ -78,6 +78,7 @@ export default function Courses(props) {
                             />
                         </div>
                     ))}
+            </div>
             </div>
             </div>
         </div>

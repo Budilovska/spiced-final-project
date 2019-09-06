@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function({ image, first, last, onClick }) {
-    image = image || "default-avatar.jpg";
+    image = image || "default.png";
     return (
         <img
             className="avatar"
