@@ -21,7 +21,6 @@ const uidSafe = require("uid-safe");
 const path = require("path");
 const s3 = require("./s3");
 const config = require("./config");
-let secrets = require('./secrets');
 
 //-------- multer saves the file to uploads directory -------//
 
@@ -58,6 +57,7 @@ if (process.env.NODE_ENV != "production") {
     app.use("/bundle.js", (req, res) => res.sendFile(`${__dirname}/bundle.js`));
 }
 
+let secrets;
 process.env.NODE_ENV === 'production' ? secrets = process.env : secrets = require('./secrets');
 
 
