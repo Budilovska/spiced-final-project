@@ -14,12 +14,6 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE skills (
-    id SERIAL PRIMARY KEY,
-    teacher_id INT REFERENCES users(id),
-    skill VARCHAR(100)
-);
-
 CREATE TABLE offers (
     id SERIAL PRIMARY KEY,
     teacher_id INT REFERENCES users(id),
@@ -42,24 +36,6 @@ CREATE TABLE courses(
     url VARCHAR(100) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
-
-
-
--- CREATE TABLE friendships(
--- 	id SERIAL PRIMARY KEY,
--- 	sender_id INT REFERENCES users(id),
---     receiver_id INT REFERENCES users(id),
---     accepted BOOLEAN DEFAULT false,
---     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
--- );
--- ​
--- CREATE TABLE chats (
---     id SERIAL PRIMARY KEY,
---     sender_id INT NOT NULL REFERENCES users(id),
---     message VARCHAR(1000),
---     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
--- );
 --
 CREATE TABLE private (
     id SERIAL PRIMARY KEY,

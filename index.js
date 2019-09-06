@@ -12,7 +12,7 @@ const axios = require("axios");
 //this has to happen after const app = express() line
 const server = require("http").Server(app);
 const io = require("socket.io")(server, {
-    origins: "localhost:8080 192.168.50.*:*"
+    origins: "localhost:8080 https://young-pros.herokuapp.com/:*"
 });
 
 //-------------has to be above the routes, handling file uploads
@@ -320,7 +320,7 @@ app.get("*", function(req, res) {
     }
 });
 
-server.listen(8080, function() {
+server.listen(process.env.PORT || 8080, function() {
     console.log("I'm listening");
 });
 
